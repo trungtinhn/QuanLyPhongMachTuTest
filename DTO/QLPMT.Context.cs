@@ -24,17 +24,18 @@ namespace DTO
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<BC_DOANHTHU> BC_DOANHTHU { get; set; }
         public virtual DbSet<BC_SUDUNGTHUOC> BC_SUDUNGTHUOC { get; set; }
         public virtual DbSet<BENH> BENHs { get; set; }
         public virtual DbSet<BENHNHAN> BENHNHANs { get; set; }
         public virtual DbSet<CACHDUNG> CACHDUNGs { get; set; }
+        public virtual DbSet<CT_PHIEUKHAMBENH> CT_PHIEUKHAMBENH { get; set; }
+        public virtual DbSet<CT_PHIEUNHAP> CT_PHIEUNHAP { get; set; }
         public virtual DbSet<CHITIETBCDOANHTHU> CHITIETBCDOANHTHUs { get; set; }
         public virtual DbSet<CHITIETBCSUDUNGTHUOC> CHITIETBCSUDUNGTHUOCs { get; set; }
         public virtual DbSet<CHUCNANG> CHUCNANGs { get; set; }
-        public virtual DbSet<CT_PHIEUKHAMBENH> CT_PHIEUKHAMBENH { get; set; }
-        public virtual DbSet<CT_PHIEUNHAP> CT_PHIEUNHAP { get; set; }
+        public virtual DbSet<DANGKY> DANGKies { get; set; }
         public virtual DbSet<DONVI> DONVIs { get; set; }
         public virtual DbSet<HOADON> HOADONs { get; set; }
         public virtual DbSet<LOAIBENH> LOAIBENHs { get; set; }
@@ -45,6 +46,5 @@ namespace DTO
         public virtual DbSet<PHIEUNHAPTHUOC> PHIEUNHAPTHUOCs { get; set; }
         public virtual DbSet<THAMSO> THAMSOes { get; set; }
         public virtual DbSet<THUOC> THUOCs { get; set; }
-        public virtual DbSet<DANGKY> DANGKies { get; set; }
     }
 }

@@ -38,7 +38,7 @@ namespace QuanLyPhongMachTu
             {
                 currentUserName = username;
                 this.Hide();
-                Form1 form1 = new Form1();
+                fHome form1 = new fHome();
                 form1.Show();
             }
             else

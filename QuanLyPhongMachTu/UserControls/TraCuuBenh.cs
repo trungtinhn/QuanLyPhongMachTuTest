@@ -27,15 +27,6 @@ namespace QuanLyPhongMachTu.UserControls
             dLoaiThuocBLL = new BLL_LOAITHUOC();
         }
 
-        private void Title_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnTraCuuBenh_Click(object sender, EventArgs e)
         {

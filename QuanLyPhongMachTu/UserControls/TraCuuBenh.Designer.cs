@@ -65,6 +65,7 @@
             this.btnTraCuuBenh = new System.Windows.Forms.Button();
             this.txtTraCuuBenh = new Guna.UI2.WinForms.Guna2TextBox();
             this.cboTraCuuBenh = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoaiBenh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBenh)).BeginInit();
             this.gxb_Thongtinloaibenh.SuspendLayout();
@@ -77,7 +78,7 @@
             this.dgvLoaiBenh.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvLoaiBenh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLoaiBenh.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dgvLoaiBenh.Location = new System.Drawing.Point(779, 144);
+            this.dgvLoaiBenh.Location = new System.Drawing.Point(695, 155);
             this.dgvLoaiBenh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvLoaiBenh.Name = "dgvLoaiBenh";
             this.dgvLoaiBenh.ReadOnly = true;
@@ -85,7 +86,7 @@
             this.dgvLoaiBenh.RowHeadersWidth = 49;
             this.dgvLoaiBenh.RowTemplate.Height = 24;
             this.dgvLoaiBenh.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLoaiBenh.Size = new System.Drawing.Size(1041, 290);
+            this.dgvLoaiBenh.Size = new System.Drawing.Size(740, 290);
             this.dgvLoaiBenh.TabIndex = 68;
             this.dgvLoaiBenh.SelectionChanged += new System.EventHandler(this.dgvLoaiBenh_SelectionChanged);
             // 
@@ -117,7 +118,6 @@
             this.label1.Size = new System.Drawing.Size(125, 22);
             this.label1.TabIndex = 64;
             this.label1.Text = "Tên loại bệnh:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtTenLoaiBenh
             // 
@@ -132,19 +132,18 @@
             this.Title.AutoSize = true;
             this.Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Bold);
             this.Title.ForeColor = System.Drawing.Color.Salmon;
-            this.Title.Location = new System.Drawing.Point(771, 30);
+            this.Title.Location = new System.Drawing.Point(482, 30);
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(481, 46);
             this.Title.TabIndex = 62;
             this.Title.Text = "THÔNG TIN LOẠI BỆNH";
             this.Title.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Title.Click += new System.EventHandler(this.Title_Click);
             // 
             // btnXoa
             // 
             this.btnXoa.BackColor = System.Drawing.Color.LightGray;
             this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(441, 334);
+            this.btnXoa.Location = new System.Drawing.Point(338, 312);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(109, 47);
@@ -157,7 +156,7 @@
             // 
             this.btnCapNhatLoaiBenh.BackColor = System.Drawing.Color.LightGray;
             this.btnCapNhatLoaiBenh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapNhatLoaiBenh.Location = new System.Drawing.Point(276, 334);
+            this.btnCapNhatLoaiBenh.Location = new System.Drawing.Point(199, 312);
             this.btnCapNhatLoaiBenh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCapNhatLoaiBenh.Name = "btnCapNhatLoaiBenh";
             this.btnCapNhatLoaiBenh.Size = new System.Drawing.Size(113, 43);
@@ -171,7 +170,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.Salmon;
-            this.label2.Location = new System.Drawing.Point(812, 458);
+            this.label2.Location = new System.Drawing.Point(495, 459);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(375, 46);
             this.label2.TabIndex = 71;
@@ -270,7 +269,7 @@
             this.dgvBenh.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvBenh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBenh.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dgvBenh.Location = new System.Drawing.Point(88, 752);
+            this.dgvBenh.Location = new System.Drawing.Point(21, 769);
             this.dgvBenh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvBenh.Name = "dgvBenh";
             this.dgvBenh.ReadOnly = true;
@@ -278,7 +277,7 @@
             this.dgvBenh.RowHeadersWidth = 49;
             this.dgvBenh.RowTemplate.Height = 24;
             this.dgvBenh.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBenh.Size = new System.Drawing.Size(1774, 290);
+            this.dgvBenh.Size = new System.Drawing.Size(1320, 227);
             this.dgvBenh.TabIndex = 84;
             this.dgvBenh.SelectionChanged += new System.EventHandler(this.dgvBenh_SelectionChanged);
             // 
@@ -286,10 +285,10 @@
             // 
             this.btnCapNhatBenh.BackColor = System.Drawing.Color.LightGray;
             this.btnCapNhatBenh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapNhatBenh.Location = new System.Drawing.Point(1203, 570);
+            this.btnCapNhatBenh.Location = new System.Drawing.Point(1010, 582);
             this.btnCapNhatBenh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCapNhatBenh.Name = "btnCapNhatBenh";
-            this.btnCapNhatBenh.Size = new System.Drawing.Size(117, 50);
+            this.btnCapNhatBenh.Size = new System.Drawing.Size(108, 50);
             this.btnCapNhatBenh.TabIndex = 86;
             this.btnCapNhatBenh.Text = "Cập nhật";
             this.btnCapNhatBenh.UseVisualStyleBackColor = false;
@@ -299,10 +298,10 @@
             // 
             this.btnXoaBenh.BackColor = System.Drawing.Color.LightGray;
             this.btnXoaBenh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoaBenh.Location = new System.Drawing.Point(1357, 570);
+            this.btnXoaBenh.Location = new System.Drawing.Point(1010, 689);
             this.btnXoaBenh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoaBenh.Name = "btnXoaBenh";
-            this.btnXoaBenh.Size = new System.Drawing.Size(116, 50);
+            this.btnXoaBenh.Size = new System.Drawing.Size(116, 44);
             this.btnXoaBenh.TabIndex = 87;
             this.btnXoaBenh.Text = "Xóa ";
             this.btnXoaBenh.UseVisualStyleBackColor = false;
@@ -312,7 +311,7 @@
             // 
             this.btnKhongLuu.BackColor = System.Drawing.Color.LightGray;
             this.btnKhongLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKhongLuu.Location = new System.Drawing.Point(585, 330);
+            this.btnKhongLuu.Location = new System.Drawing.Point(490, 312);
             this.btnKhongLuu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnKhongLuu.Name = "btnKhongLuu";
             this.btnKhongLuu.Size = new System.Drawing.Size(109, 49);
@@ -325,7 +324,7 @@
             // 
             this.btnThem.BackColor = System.Drawing.Color.LightGray;
             this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.Location = new System.Drawing.Point(117, 334);
+            this.btnThem.Location = new System.Drawing.Point(66, 312);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(111, 43);
@@ -338,7 +337,7 @@
             // 
             this.btnThemBenh.BackColor = System.Drawing.Color.LightGray;
             this.btnThemBenh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemBenh.Location = new System.Drawing.Point(1057, 570);
+            this.btnThemBenh.Location = new System.Drawing.Point(1010, 522);
             this.btnThemBenh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThemBenh.Name = "btnThemBenh";
             this.btnThemBenh.Size = new System.Drawing.Size(108, 50);
@@ -351,10 +350,10 @@
             // 
             this.btnKhongLuuBenh.BackColor = System.Drawing.Color.LightGray;
             this.btnKhongLuuBenh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKhongLuuBenh.Location = new System.Drawing.Point(1516, 570);
+            this.btnKhongLuuBenh.Location = new System.Drawing.Point(1010, 636);
             this.btnKhongLuuBenh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnKhongLuuBenh.Name = "btnKhongLuuBenh";
-            this.btnKhongLuuBenh.Size = new System.Drawing.Size(117, 50);
+            this.btnKhongLuuBenh.Size = new System.Drawing.Size(108, 44);
             this.btnKhongLuuBenh.TabIndex = 93;
             this.btnKhongLuuBenh.Text = "Không lưu";
             this.btnKhongLuuBenh.UseVisualStyleBackColor = false;
@@ -368,7 +367,7 @@
             this.gxb_Thongtinloaibenh.Controls.Add(this.label10);
             this.gxb_Thongtinloaibenh.Controls.Add(this.txtMaLoaiBenh);
             this.gxb_Thongtinloaibenh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gxb_Thongtinloaibenh.Location = new System.Drawing.Point(117, 144);
+            this.gxb_Thongtinloaibenh.Location = new System.Drawing.Point(48, 126);
             this.gxb_Thongtinloaibenh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gxb_Thongtinloaibenh.Name = "gxb_Thongtinloaibenh";
             this.gxb_Thongtinloaibenh.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -441,7 +440,7 @@
             this.txtTraCuuLoaiBenh.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtTraCuuLoaiBenh.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTraCuuLoaiBenh.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtTraCuuLoaiBenh.IconLeft")));
-            this.txtTraCuuLoaiBenh.Location = new System.Drawing.Point(899, 82);
+            this.txtTraCuuLoaiBenh.Location = new System.Drawing.Point(737, 90);
             this.txtTraCuuLoaiBenh.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtTraCuuLoaiBenh.Name = "txtTraCuuLoaiBenh";
             this.txtTraCuuLoaiBenh.PasswordChar = '\0';
@@ -464,8 +463,8 @@
             "Tất cả",
             "Mã loại bệnh",
             "Tên loại bệnh"});
-            this.cboTraCuuLoaiBenh.Location = new System.Drawing.Point(1243, 82);
-            this.cboTraCuuLoaiBenh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboTraCuuLoaiBenh.Location = new System.Drawing.Point(1044, 98);
+            this.cboTraCuuLoaiBenh.Margin = new System.Windows.Forms.Padding(4);
             this.cboTraCuuLoaiBenh.Name = "cboTraCuuLoaiBenh";
             this.cboTraCuuLoaiBenh.Size = new System.Drawing.Size(204, 36);
             this.cboTraCuuLoaiBenh.StartIndex = 0;
@@ -475,7 +474,7 @@
             // 
             this.btnTraCuuLoaiBenh.BackColor = System.Drawing.Color.LightGray;
             this.btnTraCuuLoaiBenh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTraCuuLoaiBenh.Location = new System.Drawing.Point(1541, 82);
+            this.btnTraCuuLoaiBenh.Location = new System.Drawing.Point(1294, 98);
             this.btnTraCuuLoaiBenh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTraCuuLoaiBenh.Name = "btnTraCuuLoaiBenh";
             this.btnTraCuuLoaiBenh.Size = new System.Drawing.Size(117, 44);
@@ -536,17 +535,26 @@
             "Thuốc đặc trị",
             "Tên loại bệnh"});
             this.cboTraCuuBenh.Location = new System.Drawing.Point(563, 689);
-            this.cboTraCuuBenh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboTraCuuBenh.Margin = new System.Windows.Forms.Padding(4);
             this.cboTraCuuBenh.Name = "cboTraCuuBenh";
             this.cboTraCuuBenh.Size = new System.Drawing.Size(204, 36);
             this.cboTraCuuBenh.StartIndex = 0;
             this.cboTraCuuBenh.TabIndex = 98;
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(431, 1024);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 89);
+            this.panel1.TabIndex = 99;
+            // 
             // TraCuuBenh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.PeachPuff;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.cboTraCuuBenh);
             this.Controls.Add(this.cboTraCuuLoaiBenh);
             this.Controls.Add(this.txtTraCuuBenh);
@@ -569,7 +577,7 @@
             this.Controls.Add(this.Title);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TraCuuBenh";
-            this.Size = new System.Drawing.Size(1918, 1111);
+            this.Size = new System.Drawing.Size(1652, 1112);
             this.Load += new System.EventHandler(this.TraCuuBenh_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoaiBenh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBenh)).EndInit();
@@ -620,5 +628,6 @@
         private System.Windows.Forms.Button btnTraCuuBenh;
         private Guna.UI2.WinForms.Guna2TextBox txtTraCuuBenh;
         private Guna.UI2.WinForms.Guna2ComboBox cboTraCuuBenh;
+        private System.Windows.Forms.Panel panel1;
     }
 }

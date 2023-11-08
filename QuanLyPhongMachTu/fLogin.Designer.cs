@@ -102,7 +102,8 @@
             this.txt_Password.Location = new System.Drawing.Point(291, 299);
             this.txt_Password.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Password.Name = "txt_Password";
-            this.txt_Password.PasswordChar = '\0';
+            this.txt_Password.PasswordChar = '*';
+            this.txt_Password.PlaceholderForeColor = System.Drawing.Color.Black;
             this.txt_Password.PlaceholderText = "";
             this.txt_Password.SelectedText = "";
             this.txt_Password.Size = new System.Drawing.Size(307, 55);
@@ -123,6 +124,7 @@
             this.txt_UserName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_UserName.Name = "txt_UserName";
             this.txt_UserName.PasswordChar = '\0';
+            this.txt_UserName.PlaceholderForeColor = System.Drawing.Color.Black;
             this.txt_UserName.PlaceholderText = "";
             this.txt_UserName.SelectedText = "";
             this.txt_UserName.Size = new System.Drawing.Size(307, 55);

@@ -53,19 +53,19 @@ namespace QuanLyPhongMachTu.UserControls
 
             List<BENHNHAN> benhNhans = dBenhNhanBLL.LayDanhSachBenhNhan(cboTraCuu.Text, txtTraCuu.Text, dtimeTraCuu.Value);
 
-            foreach(BENHNHAN benhNhan in benhNhans)
+            foreach (BENHNHAN benhNhan in benhNhans)
             {
                 DateTime date = (DateTime)benhNhan.NgaySinh;
                 dt.Rows.Add(benhNhan.MaBenhNhan, benhNhan.HoTenBenhNhan, benhNhan.GioiTinh, date.ToString("dd/MM/yyyy"), benhNhan.DiaChi);
             }
 
             dgvThongTinBN.DataSource = dt;
-            
-            //dgvThongTinBN.Columns[0].HeaderText = "Mã bệnh nhân";
-            //dgvThongTinBN.Columns[1].HeaderText = "Họ tên";
-            //dgvThongTinBN.Columns[2].HeaderText = "Giới tính";
-            //dgvThongTinBN.Columns[3].HeaderText = "Ngày sinh";
-            //dgvThongTinBN.Columns[4].HeaderText = "Địa chỉ";
+
+            ////dgvThongTinBN.Columns[0].HeaderText = "Mã bệnh nhân";
+            ////dgvThongTinBN.Columns[1].HeaderText = "Họ tên";
+            ////dgvThongTinBN.Columns[2].HeaderText = "Giới tính";
+            ////dgvThongTinBN.Columns[3].HeaderText = "Ngày sinh";
+            ////dgvThongTinBN.Columns[4].HeaderText = "Địa chỉ";
         }
 
         private bool KiemTraNhapLieu()
@@ -83,7 +83,7 @@ namespace QuanLyPhongMachTu.UserControls
         private void btnThemBN_Click(object sender, EventArgs e)
         {
 
-            if(!KiemTraNhapLieu())
+            if (!KiemTraNhapLieu())
             {
                 MessageBox.Show("Vui lòng cung cấp đầy đủ thông tin!");
                 return;
@@ -94,7 +94,8 @@ namespace QuanLyPhongMachTu.UserControls
             if (radNam.Checked)
             {
                 benhNhan.GioiTinh = "Nam";
-            }else
+            }
+            else
             {
                 benhNhan.GioiTinh = "Nữ";
             }
@@ -153,12 +154,12 @@ namespace QuanLyPhongMachTu.UserControls
             if (dgvThongTinBN.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvThongTinBN.SelectedRows[0];
-              
-               
+
+
                 txtMaBN.Text = row.Cells[0].Value.ToString();
                 txtHotenBN.Text = row.Cells[1].Value.ToString();
 
-                if(row.Cells[2].Value.ToString() == "Nam")
+                if (row.Cells[2].Value.ToString() == "Nam")
                 {
                     radNam.Checked = true;
                 }
@@ -169,13 +170,13 @@ namespace QuanLyPhongMachTu.UserControls
 
                 //dtimeNgaySinh.Value = (DateTime) row.Cells[3].Value;
                 txtDiachiBN.Text = row.Cells[4].Value.ToString();
-          
+
 
 
             }
 
             HienThiDanhSachHoaDon();
-            
+
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -251,8 +252,9 @@ namespace QuanLyPhongMachTu.UserControls
             {
                 MessageBox.Show("Đăng ký khám bênh thành công!");
                 HienThiSoNguoiConLaiDangKy();
-               
-            }else
+
+            }
+            else
             {
                 MessageBox.Show("Đăng ký khám bệnh thất bại!");
             }
@@ -280,12 +282,12 @@ namespace QuanLyPhongMachTu.UserControls
             List<HOADON> hoaDons = dHoaDonBLL.LayDanhSachHoaDon(benhNhan.id);
 
             int i = 0;
-            foreach(HOADON hOADON in hoaDons)
+            foreach (HOADON hOADON in hoaDons)
             {
                 i++;
                 PHIEUKHAMBENH pkb = dPhieuKhamBenhBLL.LayPhieuKhamBenh(hOADON.SoPhieuKhamBenh.Value);
 
-                dt.Rows.Add(i, hOADON.SoPhieuKhamBenh, pkb.NgayKham, hOADON.TienKham + hOADON.TienThuoc, hOADON.TrangThai); 
+                dt.Rows.Add(i, hOADON.SoPhieuKhamBenh, pkb.NgayKham, hOADON.TienKham + hOADON.TienThuoc, hOADON.TrangThai);
 
 
             }
@@ -301,7 +303,7 @@ namespace QuanLyPhongMachTu.UserControls
 
         private void dgvDanhSachHoaDon_DoubleClick(object sender, EventArgs e)
         {
-            if(dgvDanhSachHoaDon.SelectedRows.Count > 0)
+            if (dgvDanhSachHoaDon.SelectedRows.Count > 0)
             {
 
                 DataGridViewRow row = dgvDanhSachHoaDon.SelectedRows[0];
@@ -315,7 +317,7 @@ namespace QuanLyPhongMachTu.UserControls
 
                     fhd.Show();
                 }
-                
+
             }
         }
 

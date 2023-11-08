@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b719102f9d864f81b09f73f33e268157" Name="Diagram1">
+      <Diagram DiagramId="29bdb43f15e9487fbc8386495d75fc3f" Name="Diagram1">
         <EntityTypeShape EntityType="QLPMTModel.BC_DOANHTHU" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLPMTModel.BC_SUDUNGTHUOC" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLPMTModel.BENH" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
@@ -24,7 +24,7 @@
         <EntityTypeShape EntityType="QLPMTModel.NHOMNGUOIDUNG" Width="1.5" PointX="14" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QLPMTModel.PHIEUKHAMBENH" Width="1.5" PointX="13.5" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="QLPMTModel.PHIEUNHAPTHUOC" Width="1.5" PointX="9" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLPMTModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPMTModel.sysdiagram" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QLPMTModel.THAMSO" Width="1.5" PointX="2.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QLPMTModel.THUOC" Width="1.5" PointX="6" PointY="6.625" IsExpanded="true" />
         <AssociationConnector Association="QLPMTModel.FK__CHITIETBC__idMaB__5FB337D6" ManuallyRouted="false" />

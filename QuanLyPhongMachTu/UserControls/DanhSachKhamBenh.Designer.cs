@@ -75,7 +75,7 @@
             this.dgvThongTinBN.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvThongTinBN.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvThongTinBN.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvThongTinBN.Location = new System.Drawing.Point(53, 479);
+            this.dgvThongTinBN.Location = new System.Drawing.Point(33, 488);
             this.dgvThongTinBN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvThongTinBN.Name = "dgvThongTinBN";
             this.dgvThongTinBN.ReadOnly = true;
@@ -83,7 +83,7 @@
             this.dgvThongTinBN.RowHeadersWidth = 49;
             this.dgvThongTinBN.RowTemplate.Height = 24;
             this.dgvThongTinBN.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvThongTinBN.Size = new System.Drawing.Size(1101, 308);
+            this.dgvThongTinBN.Size = new System.Drawing.Size(1068, 288);
             this.dgvThongTinBN.TabIndex = 67;
             this.dgvThongTinBN.SelectionChanged += new System.EventHandler(this.dgvThongTinBN_SelectionChanged);
             // 
@@ -103,10 +103,10 @@
             // btnDangKy
             // 
             this.btnDangKy.BackColor = System.Drawing.Color.LightGray;
-            this.btnDangKy.Location = new System.Drawing.Point(935, 300);
+            this.btnDangKy.Location = new System.Drawing.Point(790, 294);
             this.btnDangKy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDangKy.Name = "btnDangKy";
-            this.btnDangKy.Size = new System.Drawing.Size(85, 47);
+            this.btnDangKy.Size = new System.Drawing.Size(104, 47);
             this.btnDangKy.TabIndex = 63;
             this.btnDangKy.Text = "Đăng ký";
             this.btnDangKy.UseVisualStyleBackColor = false;
@@ -136,7 +136,7 @@
             // 
             this.label11.AllowDrop = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.label11.Location = new System.Drawing.Point(816, 71);
+            this.label11.Location = new System.Drawing.Point(705, 77);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(303, 57);
             this.label11.TabIndex = 59;
@@ -250,7 +250,7 @@
             this.lbl_Thongtinbenhnhan.AutoSize = true;
             this.lbl_Thongtinbenhnhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.1194F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Thongtinbenhnhan.ForeColor = System.Drawing.Color.Salmon;
-            this.lbl_Thongtinbenhnhan.Location = new System.Drawing.Point(230, 27);
+            this.lbl_Thongtinbenhnhan.Location = new System.Drawing.Point(152, 30);
             this.lbl_Thongtinbenhnhan.Name = "lbl_Thongtinbenhnhan";
             this.lbl_Thongtinbenhnhan.Size = new System.Drawing.Size(381, 36);
             this.lbl_Thongtinbenhnhan.TabIndex = 36;
@@ -260,16 +260,17 @@
             // dgvDanhSachHoaDon
             // 
             this.dgvDanhSachHoaDon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDanhSachHoaDon.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dgvDanhSachHoaDon.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvDanhSachHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDanhSachHoaDon.Location = new System.Drawing.Point(1176, 143);
+            this.dgvDanhSachHoaDon.Location = new System.Drawing.Point(33, 831);
             this.dgvDanhSachHoaDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvDanhSachHoaDon.Name = "dgvDanhSachHoaDon";
             this.dgvDanhSachHoaDon.RowHeadersVisible = false;
             this.dgvDanhSachHoaDon.RowHeadersWidth = 49;
             this.dgvDanhSachHoaDon.RowTemplate.Height = 24;
             this.dgvDanhSachHoaDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDanhSachHoaDon.Size = new System.Drawing.Size(333, 644);
+            this.dgvDanhSachHoaDon.Size = new System.Drawing.Size(1068, 311);
             this.dgvDanhSachHoaDon.TabIndex = 100;
             this.dgvDanhSachHoaDon.DoubleClick += new System.EventHandler(this.dgvDanhSachHoaDon_DoubleClick);
             // 
@@ -278,11 +279,11 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Salmon;
-            this.label6.Location = new System.Drawing.Point(1214, 110);
+            this.label6.Location = new System.Drawing.Point(404, 789);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(265, 31);
+            this.label6.Size = new System.Drawing.Size(326, 31);
             this.label6.TabIndex = 101;
-            this.label6.Text = "Danh sách hóa đơn";
+            this.label6.Text = "DANH SÁCH HÓA ĐƠN";
             // 
             // btnXoa
             // 
@@ -333,7 +334,7 @@
             this.gbx_Thongtinbenhnhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbx_Thongtinbenhnhan.Name = "gbx_Thongtinbenhnhan";
             this.gbx_Thongtinbenhnhan.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbx_Thongtinbenhnhan.Size = new System.Drawing.Size(614, 285);
+            this.gbx_Thongtinbenhnhan.Size = new System.Drawing.Size(590, 287);
             this.gbx_Thongtinbenhnhan.TabIndex = 104;
             this.gbx_Thongtinbenhnhan.TabStop = false;
             this.gbx_Thongtinbenhnhan.Text = "Thông Tin Bệnh Nhân";
@@ -390,7 +391,7 @@
             this.lbl_Thongtindangky.AutoSize = true;
             this.lbl_Thongtindangky.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.1194F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Thongtindangky.ForeColor = System.Drawing.Color.Salmon;
-            this.lbl_Thongtindangky.Location = new System.Drawing.Point(916, 27);
+            this.lbl_Thongtindangky.Location = new System.Drawing.Point(612, 41);
             this.lbl_Thongtindangky.Name = "lbl_Thongtindangky";
             this.lbl_Thongtindangky.Size = new System.Drawing.Size(533, 36);
             this.lbl_Thongtindangky.TabIndex = 105;
@@ -405,7 +406,7 @@
             this.gxb_Dangky.Controls.Add(this.label5);
             this.gxb_Dangky.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gxb_Dangky.ForeColor = System.Drawing.Color.Salmon;
-            this.gxb_Dangky.Location = new System.Drawing.Point(779, 186);
+            this.gxb_Dangky.Location = new System.Drawing.Point(649, 172);
             this.gxb_Dangky.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gxb_Dangky.Name = "gxb_Dangky";
             this.gxb_Dangky.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -466,7 +467,7 @@
             // 
             this.txtSoBNtiepnhan.BackColor = System.Drawing.Color.Transparent;
             this.txtSoBNtiepnhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoBNtiepnhan.Location = new System.Drawing.Point(949, 127);
+            this.txtSoBNtiepnhan.Location = new System.Drawing.Point(828, 127);
             this.txtSoBNtiepnhan.Name = "txtSoBNtiepnhan";
             this.txtSoBNtiepnhan.Size = new System.Drawing.Size(45, 44);
             this.txtSoBNtiepnhan.TabIndex = 110;
@@ -510,6 +511,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.Controls.Add(this.dtimeTraCuu);
             this.Controls.Add(this.txtSoBNtiepnhan);
@@ -529,7 +531,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "DanhSachKhamBenh";
-            this.Size = new System.Drawing.Size(1601, 865);
+            this.Size = new System.Drawing.Size(1552, 1474);
             this.Load += new System.EventHandler(this.DanhSachKhamBenh_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvThongTinBN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachHoaDon)).EndInit();
