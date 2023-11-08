@@ -75,28 +75,28 @@ namespace QuanLyPhongMachTu
 
         private void btn_Donvi_Cachdung_Click(object sender, EventArgs e)
         {
-            u_donViCachDung.BringToFront();
+            //u_donViCachDung.BringToFront();
 
             ChangeNormalColorOnPanelLeft(sender);
         }
 
         private void btn_Nhapthuoc_Click(object sender, EventArgs e)
         {
-            u_nhapThuoc.BringToFront();
+            //u_nhapThuoc.BringToFront();
 
             ChangeNormalColorOnPanelLeft(sender);
         }
 
         private void btn_Baocao_Click(object sender, EventArgs e)
         {
-            uBaoCao.BringToFront();
+            //uBaoCao.BringToFront();
 
             ChangeNormalColorOnPanelLeft(sender);
         }
 
         private void btn_Quidinh_Click(object sender, EventArgs e)
         {
-            u_thayDoiQuiDinh.BringToFront();
+            //u_thayDoiQuiDinh.BringToFront();
 
             ChangeNormalColorOnPanelLeft(sender);
         }
@@ -105,11 +105,11 @@ namespace QuanLyPhongMachTu
         {
             if(check == true)
             {
-                uTaiKhoancs.BringToFront();
+                //uTaiKhoancs.BringToFront();
             }
             else
             {
-                uTaiKhoanQLy1.BringToFront();
+                //uTaiKhoanQLy1.BringToFront();
             }
 
             //DoiMau

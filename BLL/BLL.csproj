@@ -79,7 +79,6 @@
     <Compile Include="BLL_PHIEUNHAPTHUOC.cs" />
     <Compile Include="BLL_THAMSO.cs" />
     <Compile Include="BLL_THUOC.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

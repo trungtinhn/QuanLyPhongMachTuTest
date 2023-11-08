@@ -24,7 +24,7 @@ namespace DTO
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<BC_DOANHTHU> BC_DOANHTHU { get; set; }
         public virtual DbSet<BC_SUDUNGTHUOC> BC_SUDUNGTHUOC { get; set; }
         public virtual DbSet<BENH> BENHs { get; set; }

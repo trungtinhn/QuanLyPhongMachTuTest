@@ -20,8 +20,6 @@ namespace QuanLyPhongMachTu.UserControls
         BLL_HOADON dHoaDonBLL;
         BLL_PHIEUKHAMBENH dPhieuKhamBenhBLL;
 
-       
-      
         public DanhSachKhamBenh()
         {
             InitializeComponent();

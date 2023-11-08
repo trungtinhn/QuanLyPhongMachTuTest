@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyPhongMachTu.UserControls
+namespace QuanLyPhongMachTu
 {
-    public partial class uBaoCaoSDThuoc : UserControl
+    public partial class fHome : Form
     {
-        public uBaoCaoSDThuoc()
+        public fHome()
         {
             InitializeComponent();
         }

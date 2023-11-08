@@ -83,7 +83,7 @@
             this.dgvThongTinBN.RowHeadersWidth = 49;
             this.dgvThongTinBN.RowTemplate.Height = 24;
             this.dgvThongTinBN.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvThongTinBN.Size = new System.Drawing.Size(1101, 432);
+            this.dgvThongTinBN.Size = new System.Drawing.Size(1101, 308);
             this.dgvThongTinBN.TabIndex = 67;
             this.dgvThongTinBN.SelectionChanged += new System.EventHandler(this.dgvThongTinBN_SelectionChanged);
             // 
@@ -269,7 +269,7 @@
             this.dgvDanhSachHoaDon.RowHeadersWidth = 49;
             this.dgvDanhSachHoaDon.RowTemplate.Height = 24;
             this.dgvDanhSachHoaDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDanhSachHoaDon.Size = new System.Drawing.Size(413, 768);
+            this.dgvDanhSachHoaDon.Size = new System.Drawing.Size(333, 644);
             this.dgvDanhSachHoaDon.TabIndex = 100;
             this.dgvDanhSachHoaDon.DoubleClick += new System.EventHandler(this.dgvDanhSachHoaDon_DoubleClick);
             // 
@@ -278,7 +278,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Salmon;
-            this.label6.Location = new System.Drawing.Point(1286, 104);
+            this.label6.Location = new System.Drawing.Point(1214, 110);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(265, 31);
             this.label6.TabIndex = 101;
@@ -529,7 +529,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "DanhSachKhamBenh";
-            this.Size = new System.Drawing.Size(1855, 940);
+            this.Size = new System.Drawing.Size(1601, 865);
             this.Load += new System.EventHandler(this.DanhSachKhamBenh_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvThongTinBN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachHoaDon)).EndInit();

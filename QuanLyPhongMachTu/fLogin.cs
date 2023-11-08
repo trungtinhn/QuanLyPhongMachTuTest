@@ -26,11 +26,6 @@ namespace QuanLyPhongMachTu
             this.MinimumSize = new System.Drawing.Size(1890, 1030);
         }
 
-        private void lbl_QuanLyPhongMachTu_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_Login_Click(object sender, EventArgs e)
         {
             string username = txt_UserName.Text;
