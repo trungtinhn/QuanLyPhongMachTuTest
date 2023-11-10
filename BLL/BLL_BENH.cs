@@ -11,10 +11,14 @@ namespace BLL
 {
     public class BLL_BENH
     {
-        DAL_BENH dBenhDAL;
+        IDAL_BENH dBenhDAL;
         public BLL_BENH()
         {
             dBenhDAL = new DAL_BENH();
+        }
+        public BLL_BENH(IDAL_BENH dal)
+        {
+            this.dBenhDAL = dal;
         }
 
         public dynamic LayThongTinBenh()

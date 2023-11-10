@@ -1,21 +1,37 @@
 ﻿using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DAL_BENH
+    public interface IDAL_BENH
+    {
+        dynamic LayThongTinBenh();
+        void XoaBenh(BENH benh);
+        void ThemBenh(BENH benh);
+        void CapNhatBenh(BENH benh);
+        bool KiemTraBenh(BENH benh);
+        BENH LayBenh(string maBenh);
+        BENH LayBenh(int maBenh);
+        dynamic LocBenh(string kieuLoc, string giaTri);
+    }
+    public class DAL_BENH: IDAL_BENH
     {
         QLPMTEntities db;
-   
         public DAL_BENH()
         {
             db = new QLPMTEntities();
            
         }
+        public DAL_BENH(QLPMTEntities dbContext)
+        {
+            this.db = dbContext;
+        }
+
 
         public dynamic LayThongTinBenh()
         {
@@ -67,6 +83,10 @@ namespace DAL
             try
             {
                 BENH b = db.BENHs.FirstOrDefault(p => p.MaBenh == benh.MaBenh);
+                if(b == null)
+                {
+                    return false;
+                }
                 return true;
             }catch (Exception ex)
             {

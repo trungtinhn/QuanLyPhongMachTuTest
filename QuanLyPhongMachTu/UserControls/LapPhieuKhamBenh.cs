@@ -81,8 +81,7 @@ namespace QuanLyPhongMachTu.UserControls
 
         public void HienThiDanhSachKhamBenh()
         {
-      
-
+            dDangKyBLL = new BLL_DANGKY();
             var dt = new DataTable();
             dt.Columns.Add("Mã bệnh nhân");
             dt.Columns.Add("Họ tên");

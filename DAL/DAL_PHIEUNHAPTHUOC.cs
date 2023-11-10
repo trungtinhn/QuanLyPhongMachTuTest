@@ -47,9 +47,6 @@ namespace DAL
         }
 
 
-
-
-
         public bool XoaPhieuNhap(int soPhieu)
         {
             PHIEUNHAPTHUOC phieu = db.PHIEUNHAPTHUOCs.Find(soPhieu);

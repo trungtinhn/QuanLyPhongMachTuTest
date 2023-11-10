@@ -8,21 +8,31 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DAL_LOGIN
+    public interface IDAL_LOGIN
     {
+        bool Login(string username, string password);
+        bool Check(String username);
+
+    }
+    public class DAL_LOGIN: IDAL_LOGIN
+    {
+        QLPMTEntities db;
+        public DAL_LOGIN()
+        {
+            db = new QLPMTEntities();
+
+        }
+        public DAL_LOGIN(QLPMTEntities dbContext)
+        {
+            this.db = dbContext;
+        }
         public bool Login(string username, string password)
         {
-            using (QLPMTEntities dbContext = new QLPMTEntities())
-            {
-                return dbContext.NGUOIDUNGs.Any(a => a.TenDangNhap == username && a.MatKhau == password);
-            }
+            return db.NGUOIDUNGs.Any(a => a.TenDangNhap == username && a.MatKhau == password);
         }
         public bool Check(string username)
         {
-            using (QLPMTEntities dbContext = new QLPMTEntities())
-            {
-                return dbContext.NGUOIDUNGs.Any(a => a.TenDangNhap == username);
-            }
+            return db.NGUOIDUNGs.Any(a => a.TenDangNhap == username);
         }
     }
 }
