@@ -7,7 +7,22 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DAL_LOAITHUOC
+    public interface IDAL_LOAITHUOC
+    {
+        dynamic LayDanhSachLoaiThuoc();
+        LOAITHUOC LayLoaiThuoc(string MaLoaiThuoc);
+        string LayTenLoaiThuoc(int idLoaiThuoc);
+        bool KiemTra(LOAITHUOC lOAITHUOC);
+        void Add(LOAITHUOC cd);
+        bool Check(string ten);
+        bool CapNhat(LOAITHUOC lOAITHUOC);
+        List<LOAITHUOC> GetData();
+        LOAITHUOC GetDataByMa(int maLoai);
+        void Xoa(LOAITHUOC loaiThuoc);
+        LOAITHUOC GetDataByten(string ten);
+
+    }
+    public class DAL_LOAITHUOC: IDAL_LOAITHUOC
     {
         QLPMTEntities db;
 
@@ -15,7 +30,10 @@ namespace DAL
         {
             db = new QLPMTEntities();
         }
-
+        public DAL_LOAITHUOC(QLPMTEntities qLPMTEntities)
+        {
+            db = qLPMTEntities;
+        }
         public dynamic LayDanhSachLoaiThuoc()
         {
             var loaiThuocs = db.LOAITHUOCs.Select(s => new
@@ -34,18 +52,17 @@ namespace DAL
             return loaiThuoc;
         }
 
-        public string LayTenLoaiThuoc(int idLoaiBenh)
+        public string LayTenLoaiThuoc(int idLoaiThuoc)
         {
-            LOAITHUOC loaiBenh = db.LOAITHUOCs.Find(idLoaiBenh);
-            return loaiBenh.TenLoaiThuoc;
+            LOAITHUOC loaiThuoc = db.LOAITHUOCs.Find(idLoaiThuoc);
+            return loaiThuoc.TenLoaiThuoc;
         }
 
         public bool KiemTra(LOAITHUOC lOAITHUOC)
         {
             try
             {
-                if (db.LOAITHUOCs.Any(b => b.MaLoaiThuoc == lOAITHUOC.MaLoaiThuoc)) ;
-                return true;
+                return (db.LOAITHUOCs.Any(b => b.MaLoaiThuoc == lOAITHUOC.MaLoaiThuoc));
             }
             catch (Exception ex)
             {
@@ -53,8 +70,6 @@ namespace DAL
                 Console.WriteLine(ex.Message);
                 return false;
             }
-
-
         }
 
         public void Add(LOAITHUOC cd)
@@ -80,8 +95,6 @@ namespace DAL
             }
         }
 
-
-
         public bool CapNhat(LOAITHUOC lOAITHUOC)
         {
             try
@@ -103,9 +116,9 @@ namespace DAL
             return db.LOAITHUOCs.ToList();
         }
 
-        public LOAITHUOC GetDataByMa(int maLoai)
+        public LOAITHUOC GetDataByMa(int id)
         {
-            return db.LOAITHUOCs.SingleOrDefault(m => m.id == maLoai);
+            return db.LOAITHUOCs.Find(id);
         }
 
         public void Xoa(LOAITHUOC loaiThuoc)
@@ -117,29 +130,11 @@ namespace DAL
                 db.SaveChanges();
             }
         }
-
-        public LOAITHUOC getLTbyID(int i)
-        {
-            return db.LOAITHUOCs.Find(i);
-        }
-
-        public List<LOAITHUOC> getall()
-        {
-            return db.LOAITHUOCs.ToList();
-        }
-
-
-        public LOAITHUOC GetByten(string ten)
+        public LOAITHUOC GetDataByten(string ten)
         {
             return db.LOAITHUOCs.FirstOrDefault(s => s.TenLoaiThuoc == ten);
         }
-
-       
      
-        public THUOC GetTenById(int idMaThuoc)
-        {
-            return db.THUOCs.Find(idMaThuoc);
-        }
 
     }
 }

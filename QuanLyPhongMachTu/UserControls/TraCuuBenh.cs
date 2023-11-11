@@ -96,7 +96,7 @@ namespace QuanLyPhongMachTu.UserControls
                 i++;
                 string tenLoaiBenh = dLoaiBenhBLL.LayTenLoaiBenh(benh.idMaLoaiBenh);
 
-                THUOC thuoc = dThuocBLL.LayTenThuoc(benh.idMaThuocDacTri);
+                THUOC thuoc = dThuocBLL.LayThuocById(benh.idMaThuocDacTri);
 
                 dt.Rows.Add(i, benh.MaBenh, benh.TenBenh, benh.TrieuChung, thuoc.TenThuoc, tenLoaiBenh);
             }
