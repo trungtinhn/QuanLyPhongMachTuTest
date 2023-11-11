@@ -75,7 +75,7 @@ namespace QuanLyPhongMachTu
             {
                 i++;
 
-                THUOC thuoc = dThuocBLL.LayTenThuoc(pkb.idMaThuoc);
+                THUOC thuoc = dThuocBLL.LayThuocById(pkb.idMaThuoc);
 
                 dt.Rows.Add(i, thuoc.MaThuoc, thuoc.TenThuoc, pkb.SoLuong, pkb.ThanhTien);
             }

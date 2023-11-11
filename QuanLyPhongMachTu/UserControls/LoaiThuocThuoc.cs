@@ -84,8 +84,6 @@ namespace QuanLyPhongMachTu.UserControls
             dgv_dsThuocsaphet.DataSource = null;
             HienThiDanhSachThuocSapHet();
             dgv_Loaithuoc.DataSource =  dLoaiThuocBLL.LayDanhSachLoaiThuoc();
-            dThuocBLL.LayDanhSach(dgv_dsThuoc);
-
         }
 
 
@@ -463,7 +461,7 @@ namespace QuanLyPhongMachTu.UserControls
         //LOAD Cbb LOAI THUOC CHO THUOC
         public void Load_LTcb()
         {
-            List<LOAITHUOC> thuocList = dLoaiThuocBLL.GetAllThuoc();
+            List<LOAITHUOC> thuocList = dLoaiThuocBLL.GetData();
             cbb_Tenloaithuoc.DataSource = thuocList;
             cbb_Tenloaithuoc.DisplayMember = "TenLoaiThuoc";
             cbb_Tenloaithuoc.ValueMember = "id";

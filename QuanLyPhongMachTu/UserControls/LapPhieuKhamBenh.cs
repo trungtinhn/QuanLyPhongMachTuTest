@@ -158,7 +158,6 @@ namespace QuanLyPhongMachTu.UserControls
                     txtDonGiaThuoc.Text = "";
                 }    
                    
-
                 cboTenTHuoc.DisplayMember = "TenThuoc";
                 cboTenTHuoc.ValueMember = "MaThuoc";
 
@@ -186,7 +185,7 @@ namespace QuanLyPhongMachTu.UserControls
             {
                 string maThuoc = cboTenTHuoc.SelectedValue.ToString();
 
-                THUOC thuoc = dThuocBLL.LayThuoc(maThuoc);
+                THUOC thuoc = dThuocBLL.LayThuocByMa(maThuoc);
 
                 if (thuoc == null) return;
 
@@ -249,10 +248,6 @@ namespace QuanLyPhongMachTu.UserControls
             {
                 MessageBox.Show("Thuốc này đã được thêm vào, bạn có thể thay đổi số lượng!");
             }
-
-
-
-          
         }
 
         private void HienThiDGVThuoc()
@@ -263,7 +258,6 @@ namespace QuanLyPhongMachTu.UserControls
 
             //    return;
             //}
-       
             DataTable dt = new DataTable();
             dt.Columns.Add("STT");
             dt.Columns.Add("Mã thuốc");
@@ -280,7 +274,7 @@ namespace QuanLyPhongMachTu.UserControls
                 {
                     i++;
 
-                    THUOC thuoc = dThuocBLL.LayTenThuoc(pkb.idMaThuoc);
+                    THUOC thuoc = dThuocBLL.LayThuocById(pkb.idMaThuoc);
 
                     dt.Rows.Add(i, thuoc.MaThuoc, thuoc.TenThuoc, pkb.SoLuong, pkb.ThanhTien);
                 }
@@ -354,7 +348,7 @@ namespace QuanLyPhongMachTu.UserControls
                 }
                 else
                 {
-                    THUOC thuoc = dThuocBLL.LayTenThuoc(chiTietPhieuKhamBenh.idMaThuoc);
+                    THUOC thuoc = dThuocBLL.LayThuocById(chiTietPhieuKhamBenh.idMaThuoc);
                     MessageBox.Show("Thuốc " + thuoc.TenThuoc + " không đủ số lượng!");
 
                     dCTPhieuKhamBenhBLL.XoaCTPKB(chiTietPhieuKhamBenh);
@@ -559,7 +553,7 @@ namespace QuanLyPhongMachTu.UserControls
             {
                 DataGridViewRow row = dgvThuoc.SelectedRows[0];
 
-                THUOC thuoc = dThuocBLL.LayThuoc(row.Cells[1].Value.ToString());
+                THUOC thuoc = dThuocBLL.LayThuocByMa(row.Cells[1].Value.ToString());
                 string  tenLoaiThuoc = dLoaiThuocBLL.LayTenLoaiThuoc(thuoc.idMaLoaiThuoc);
                 
                 cboTenTHuoc.Text = row.Cells[2].Value.ToString();
