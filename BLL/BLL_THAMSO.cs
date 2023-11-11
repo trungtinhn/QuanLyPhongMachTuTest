@@ -10,10 +10,14 @@ namespace BLL
 {
     public class BLL_THAMSO
     {
-        DAL_THAMSO dThamSoDAL;
+        IDAL_THAMSO dThamSoDAL;
         public BLL_THAMSO()
         {
             dThamSoDAL = new DAL_THAMSO();
+        }
+        public BLL_THAMSO(IDAL_THAMSO dAL_)
+        {
+            dThamSoDAL = dAL_;
         }
 
         public void ThayDoiQuyDinh(int TienKham, int SoBenhNhanToiDa, int SoLuongThuocSapHet)

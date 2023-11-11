@@ -12,10 +12,14 @@ namespace BLL
 {
     public class BLL_LOAITHUOC
     {
-        DAL_LOAITHUOC dLoaiThuocDAL;
+        IDAL_LOAITHUOC dLoaiThuocDAL;
         public BLL_LOAITHUOC()
         {
             dLoaiThuocDAL = new DAL_LOAITHUOC();    
+        }
+        public BLL_LOAITHUOC(IDAL_LOAITHUOC dLoaiThuocDAL)
+        {
+            this.dLoaiThuocDAL = dLoaiThuocDAL;
         }
 
         public dynamic LayDanhSachLoaiThuoc()
@@ -61,7 +65,6 @@ namespace BLL
                 }
                 catch (DbUpdateException ex)
                 {
-                    MessageBox.Show(ex.Message);
                     return false;
                 }
             }
@@ -71,7 +74,6 @@ namespace BLL
             }
 
         }
-        //XOA
         public bool Xoa(LOAITHUOC cACHDUNG)
         {
             if (dLoaiThuocDAL.KiemTra(cACHDUNG))
@@ -83,7 +85,6 @@ namespace BLL
                 }
                 catch (DbUpdateException ex)
                 {
-                    MessageBox.Show(ex.Message);
                     return false;
                 }
             }
@@ -104,23 +105,14 @@ namespace BLL
                 return false;
             }
         }
-        public List<LOAITHUOC> GetAllThuoc()
-        {
-            return dLoaiThuocDAL.getall();
-        }
         public LOAITHUOC GetbyTen(string ten)
         {
-            return dLoaiThuocDAL.GetByten(ten);
+            return dLoaiThuocDAL.GetDataByten(ten);
         }
 
         public LOAITHUOC getLTbyID(int idMaLoaiThuoc)
         {
-            return dLoaiThuocDAL.getLTbyID(idMaLoaiThuoc);
-        }
-
-        public LOAITHUOC GetDataByMa(int maLoai)
-        {
-            return dLoaiThuocDAL.GetDataByMa(maLoai);
+            return dLoaiThuocDAL.GetDataByMa(idMaLoaiThuoc);
         }
 
         public List<LOAITHUOC> GetData()

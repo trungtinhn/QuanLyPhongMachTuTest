@@ -7,12 +7,21 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DAL_THAMSO
+    public interface IDAL_THAMSO
+    {
+        THAMSO LayThamSo(int id);
+        void ThayDoiThamSo(int TienKham, int SoBenhNhanToiDa, int SoLuongThuocSapHet);
+    }
+    public class DAL_THAMSO: IDAL_THAMSO
     {
         QLPMTEntities db;
         public DAL_THAMSO()
         {
             db = new QLPMTEntities();
+        }
+        public DAL_THAMSO(QLPMTEntities dbContext)
+        {
+            db = dbContext;
         }
 
         public THAMSO LayThamSo(int id) 
@@ -28,7 +37,5 @@ namespace DAL
             thamSo.SoLuongSapHet = SoLuongThuocSapHet;
             db.SaveChanges();
         }
-
-      
     }
 }

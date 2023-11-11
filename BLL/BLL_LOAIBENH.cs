@@ -12,10 +12,14 @@ namespace BLL
 {
     public class BLL_LOAIBENH
     {
-        DAL_LOAIBENH dLoaiBenhDAL;
+        IDAL_LOAIBENH dLoaiBenhDAL;
         public BLL_LOAIBENH()
         {
             dLoaiBenhDAL = new DAL_LOAIBENH();
+        }
+        public BLL_LOAIBENH(IDAL_LOAIBENH dAL_LOAIBENH)
+        {
+            dLoaiBenhDAL = dAL_LOAIBENH;
         }
 
         public dynamic LayDanhSachLoaiBenh(string kieuLoc, string giaTri)
@@ -51,7 +55,6 @@ namespace BLL
                 }
                 catch (DbUpdateException ex)
                 {
-                    MessageBox.Show(ex.Message);
                     return false;
                 }
             }
@@ -71,7 +74,6 @@ namespace BLL
                     return true;
                 }catch (DbUpdateException ex)
                 {
-                    MessageBox.Show(ex.Message);
                     return false;
                 }
             }else { return false; }

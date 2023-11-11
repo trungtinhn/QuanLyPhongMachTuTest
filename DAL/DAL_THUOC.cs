@@ -7,32 +7,34 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DAL_THUOC
+    public interface IDAL_THUOC
+    {
+        dynamic LayDanhSachThuoc(int idLoaiThuoc);
+        THUOC LayThuocByMa(string maThuoc);
+        THUOC LayThuocById(int idThuoc);
+        THUOC LayThongTinThuoc(string tenThuoc);
+        bool KiemTra(THUOC tHUOC);
+        void Add(THUOC cd);
+        bool Check(string ten);
+        bool CapNhat(THUOC tHUOC);
+        List<THUOC> getThuocSapHet();
+        List<THUOC> Getall();
+        bool CapNhatSoLuongTon(int idThuoc, int soLuongCapNhat);
+
+    }
+    public class DAL_THUOC: IDAL_THUOC
     {
         QLPMTEntities db;
-        DAL_THAMSO dThamSoDAL;
+        IDAL_THAMSO dThamSoDAL;
         public DAL_THUOC()
         {
             db = new QLPMTEntities();
             dThamSoDAL = new DAL_THAMSO();
         }
-        public dynamic LayDanhSach()
+        public DAL_THUOC(QLPMTEntities qLPMTEntities, IDAL_THAMSO dAL_THAMSO)
         {
-            var danhsach = db.THUOCs.Select(s => new
-            {
-                s.id,
-                s.MaThuoc,
-                s.TenThuoc,
-                s.idMaLoaiThuoc,
-                s.idMaCachDung,
-                s.idMaDonVi,
-                s.HuongDanSuDung,
-                s.SoLuongTon,
-                s.DonGia,
-                s.CongDung
-            }).ToList();
-
-            return danhsach;
+            db = qLPMTEntities;
+            dThamSoDAL = dAL_THAMSO;
         }
 
         public dynamic LayDanhSachThuoc(int idLoaiThuoc)
@@ -41,18 +43,13 @@ namespace DAL
             return thuocs;
         }
 
-        public dynamic DanhSachThuoc()
-        {
-            return db.THUOCs.ToList();
-        }
-
-        public THUOC LayThuoc(string maThuoc)
+        public THUOC LayThuocByMa(string maThuoc)
         {
             THUOC thuoc = db.THUOCs.FirstOrDefault(s => s.MaThuoc == maThuoc);
             return thuoc;
         }
 
-        public THUOC LayTenThuoc(int idThuoc)
+        public THUOC LayThuocById(int idThuoc)
         {
             THUOC thuoc = db.THUOCs.Find(idThuoc);
             return thuoc;
@@ -63,24 +60,15 @@ namespace DAL
             THUOC thuoc = db.THUOCs.FirstOrDefault(s => s.TenThuoc == tenThuoc);
             return thuoc;
         }
-
-        public List<THUOC> GetDataByMaLoai(int maLoai)
-        {
-            return db.THUOCs.Where(m => m.idMaLoaiThuoc == maLoai).ToList();
-        }
-
-        public THUOC GetDataByMa(int maThuoc)
-        {
-            return db.THUOCs.SingleOrDefault(m => m.id == maThuoc);
-        }
-
-
+        //public List<THUOC> GetDataByMaLoai(int maLoai)
+        //{
+        //    return db.THUOCs.Where(m => m.idMaLoaiThuoc == maLoai).ToList();
+        //}
         public bool KiemTra(THUOC tHUOC)
         {
             try
             {
-                if (db.THUOCs.Any(b => b.MaThuoc == tHUOC.MaThuoc)) ;
-                return true;
+                return (db.THUOCs.Any(b => b.MaThuoc == tHUOC.MaThuoc));
             }
             catch (Exception ex)
             {
@@ -88,8 +76,6 @@ namespace DAL
                 Console.WriteLine(ex.Message);
                 return false;
             }
-
-
         }
         public void Add(THUOC cd)
         {
@@ -113,14 +99,11 @@ namespace DAL
                 return false;
             }
         }
-
-
-
         public bool CapNhat(THUOC tHUOC)
         {
             try
             {
-                var cd = GetDataByMa(tHUOC.id);
+                var cd = LayThuocById(tHUOC.id);
                 if (cd == null) return false;
                 cd.TenThuoc = tHUOC.TenThuoc;
                 cd.idMaLoaiThuoc = tHUOC.idMaLoaiThuoc;
@@ -143,45 +126,21 @@ namespace DAL
             return db.THUOCs.ToList();
         }
 
-
-
-
         public List<THUOC> getThuocSapHet()
         {
             THAMSO thamso = dThamSoDAL.LayThamSo(1);
             return db.THUOCs.Where(s => s.SoLuongTon <= thamso.SoLuongSapHet).ToList();
         }
 
-        public bool CapNhatSoLuongTon(int idThuoc, int soLuongCapNhat) 
+        public bool CapNhatSoLuongTon(int idThuoc, int soLuongCapNhat)
         {
             THUOC thuoc = db.THUOCs.Find(idThuoc);
-
+            if (thuoc == null) return false;
             if (thuoc.SoLuongTon < soLuongCapNhat) return false;
-
-
             thuoc.SoLuongTon -= soLuongCapNhat;
             db.SaveChanges();
 
             return true;
         }
-
-        public THUOC GetThuocbyMa(int i)
-        {
-            return db.THUOCs.SingleOrDefault(s => s.id == i);
-        }
-        public void Luu(THUOC t)
-        {
-            THUOC s = db.THUOCs.Where(a => a.id == t.id).FirstOrDefault();
-            db.SaveChanges();
-        }
-        public THUOC GetTenById(int idMaThuoc)
-        {
-            return db.THUOCs.Find(idMaThuoc);
-        }
-
-        //public dynamic LocThuoc(string giaTriTenThuoc)
-        //{
-        //    return db.THUOCs.Where(p => p.TenThuoc.Contains(giaTriTenThuoc)).ToList();
-        //}
     }
 }
