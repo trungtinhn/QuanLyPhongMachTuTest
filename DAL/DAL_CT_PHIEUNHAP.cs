@@ -24,6 +24,10 @@ namespace DAL
         {
             db = new QLPMTEntities();
         }
+        public DAL_CT_PHIEUNHAP(QLPMTEntities dbContext)
+        {
+            this.db = dbContext;
+        }
         public List<CT_PHIEUNHAP> GetCTByMa(int ma)
         {
             return db.CT_PHIEUNHAP.Where(s => s.SoPhieuNhapThuoc == ma).ToList();
