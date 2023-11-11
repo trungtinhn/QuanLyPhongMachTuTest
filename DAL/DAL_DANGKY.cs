@@ -26,7 +26,11 @@ namespace DAL
             db = new QLPMTEntities();
             dThamSo = new DAL_THAMSO(); 
         }
-
+        public DAL_DANGKY(QLPMTEntities dbContext)
+        {
+            this.db = dbContext;
+            dThamSo = new DAL_THAMSO();
+        }
         public dynamic LayDanhSachDangKy()
         {
             DateTime date = DateTime.Now;

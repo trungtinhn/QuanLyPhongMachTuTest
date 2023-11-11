@@ -26,7 +26,10 @@ namespace DAL
         {
             db = new QLPMTEntities();
         }
-
+        public DAL_DONVI(QLPMTEntities dbContext)
+        {
+            this.db = dbContext;
+        }
 
         public dynamic LayDanhSach()
         {
