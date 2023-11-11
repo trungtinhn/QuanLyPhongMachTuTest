@@ -27,6 +27,12 @@ namespace DAL
         {
             db = new QLPMTEntities();
         }
+
+        public DAL_CACHDUNG(QLPMTEntities dbContext)
+        {
+            this.db = dbContext;
+        }
+
         //GET DANHSACH
         public dynamic LayDanhSach()
         {

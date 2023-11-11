@@ -25,6 +25,10 @@ namespace DAL
         {
             db = new QLPMTEntities();
         }
+        public DAL_BENHNHAN(QLPMTEntities dbContext)
+        {
+            this.db = dbContext;
+        }
         public List<BENHNHAN> LayDanhSachBenhNhan(string kieuLoc, string giaTri, DateTime ngaySinh)
         {
 
@@ -67,8 +71,11 @@ namespace DAL
 
         public void ThemBenhNhan(BENHNHAN benhNhan)
         {
-            db.BENHNHANs.Add(benhNhan);
-            db.SaveChanges();
+            if (benhNhan != null)
+            {
+                db.BENHNHANs.Add(benhNhan);
+                db.SaveChanges();
+            }
         }
 
         public bool KiemTraBenhNhan(BENHNHAN benhNhan)
