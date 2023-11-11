@@ -27,6 +27,12 @@ namespace DAL
             thamSoDAL = new DAL_THAMSO();
             dPKB = new DAL_PHIEUKHAMBENH();
         }
+        public DAL_HOADON(QLPMTEntities dbContext)
+        {
+            this.db = dbContext;
+            thamSoDAL = new DAL_THAMSO();
+            dPKB = new DAL_PHIEUKHAMBENH();
+        }
 
         public void TaoHoaDon(HOADON hoaDon)
         {
