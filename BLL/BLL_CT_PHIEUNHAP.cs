@@ -10,40 +10,45 @@ namespace BLL
 {
     public class BLL_CT_PHIEUNHAP
     {
-        DAL_CT_PHIEUNHAP dCT_PhieuNhap;
+        private IDAL_CTPHIEUNHAP dCTPhieuNhapDAL;
+
+        public BLL_CT_PHIEUNHAP(IDAL_CTPHIEUNHAP dalCTPhieuNhap)
+        {
+            dCTPhieuNhapDAL = dalCTPhieuNhap;
+        }
+
         public BLL_CT_PHIEUNHAP()
         {
-            dCT_PhieuNhap = new DAL_CT_PHIEUNHAP();
         }
 
         public List<CT_PHIEUNHAP> GetCTByMa(int ma)
         {
-            return dCT_PhieuNhap.GetCTByMa(ma);
+            return dCTPhieuNhapDAL.GetCTByMa(ma);
         }
         public bool ThemChiTietPhieu(CT_PHIEUNHAP model)
         {
-            return dCT_PhieuNhap.ThemChiTietPhieu(model);
+            return dCTPhieuNhapDAL.ThemChiTietPhieu(model);
         }
         public object GetDataCTPhieuByMaPhieu(int maPhieu)
         {
-            return dCT_PhieuNhap.GetDataCTPhieuByMaPhieu(maPhieu);
+            return dCTPhieuNhapDAL.GetDataCTPhieuByMaPhieu(maPhieu);
         }
         public bool XoaChiTietPhieu(CT_PHIEUNHAP model)
         {
-            return dCT_PhieuNhap.XoaChiTietPhieu(model);
+            return dCTPhieuNhapDAL.XoaChiTietPhieu(model);
         }
 
         public bool SuaChiTietPhieu(CT_PHIEUNHAP model)
         {
-            return dCT_PhieuNhap.SuaChiTietPhieu(model);
+            return dCTPhieuNhapDAL.SuaChiTietPhieu(model);
         }
         public bool XoaAllChiTietPhieu(int soPhieu)
         {
-            return dCT_PhieuNhap.XoaAllChiTietPhieu(soPhieu);
+            return dCTPhieuNhapDAL.XoaAllChiTietPhieu(soPhieu);
         }
         public dynamic Getall(int i)
         {
-            return dCT_PhieuNhap.Getall(i);
+            return dCTPhieuNhapDAL.Getall(i);
         }
     }
 }

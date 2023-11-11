@@ -10,17 +10,22 @@ namespace BLL
 {
     public class BLL_HOADON
     {
-        DAL_HOADON dHoaDonBLL;
+        private IDAL_HOADON dHoaDonDAL;
+
+        public BLL_HOADON(IDAL_HOADON dalHoaDon)
+        {
+            dHoaDonDAL = dalHoaDon;
+        }
+
         public BLL_HOADON()
         {
-            dHoaDonBLL = new DAL_HOADON();
         }
 
         public bool TaoHoaDon(HOADON hoaDon)
         {
             try
             {
-                dHoaDonBLL.TaoHoaDon(hoaDon);
+                dHoaDonDAL.TaoHoaDon(hoaDon);
                 return true;
             }catch (Exception ex)
             {
@@ -30,21 +35,21 @@ namespace BLL
 
         public dynamic LayDanhSachHoaDon(int idBenhNhan)
         {
-            return dHoaDonBLL.LayDanhSachHoaDon(idBenhNhan);
+            return dHoaDonDAL.LayDanhSachHoaDon(idBenhNhan);
         }
 
         public HOADON LayHoaDon(int soPhieuKhamBenh)
         {
-            return dHoaDonBLL.LayHoaDon(soPhieuKhamBenh);
+            return dHoaDonDAL.LayHoaDon(soPhieuKhamBenh);
         }
         public void CapNhatThanhToan(int id)
         {
-            dHoaDonBLL.CapNhatThanhToan(id);
+            dHoaDonDAL.CapNhatThanhToan(id);
         }
 
         public int TongDoanhThuNgay(int ngay, int thang, int nam)
         {
-            return dHoaDonBLL.TongDoanhThuNgay(ngay, thang, nam);
+            return dHoaDonDAL.TongDoanhThuNgay(ngay, thang, nam);
         }
     }
 }

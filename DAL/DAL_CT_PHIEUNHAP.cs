@@ -7,7 +7,17 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DAL_CT_PHIEUNHAP
+    public interface IDAL_CTPHIEUNHAP
+    {
+        dynamic Getall(int i);
+        List<CT_PHIEUNHAP> GetCTByMa(int ma);
+        object GetDataCTPhieuByMaPhieu(int maPhieu);
+        bool SuaChiTietPhieu(CT_PHIEUNHAP model);
+        bool ThemChiTietPhieu(CT_PHIEUNHAP model);
+        bool XoaAllChiTietPhieu(int soPhieu);
+        bool XoaChiTietPhieu(CT_PHIEUNHAP model);
+    }
+    public class DAL_CT_PHIEUNHAP : IDAL_CTPHIEUNHAP
     {
         QLPMTEntities db;
         public DAL_CT_PHIEUNHAP()

@@ -7,14 +7,25 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DAL_BENHNHAN
+    public interface IDAL_BENHNHAN
     {
+        void CapNhatBenhNhan(BENHNHAN benhNhan);
+        bool KiemTraBenhNhan(BENHNHAN benhNhan);
+        List<BENHNHAN> LayDanhSachBenhNhan(string kieuLoc, string giaTri, DateTime ngaySinh);
+        BENHNHAN LayThongTinBenhNhan(string maBenhNhan);
+        BENHNHAN LayThongTinBenhNhan(int idBenhNhan);
+        void ThemBenhNhan(BENHNHAN benhNhan);
+        void XoaBenhNhan(BENHNHAN benhNhan);
+    }
+    public class DAL_BENHNHAN : IDAL_BENHNHAN
+    {
+
         QLPMTEntities db;
         public DAL_BENHNHAN()
         {
             db = new QLPMTEntities();
         }
-        public dynamic LayDanhSachBenhNhan(string kieuLoc, string giaTri, DateTime ngaySinh)
+        public List<BENHNHAN> LayDanhSachBenhNhan(string kieuLoc, string giaTri, DateTime ngaySinh)
         {
 
             List<BENHNHAN> danhSach = new List<BENHNHAN>();

@@ -9,7 +9,15 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DAL_DANGKY
+    public interface IDAL_DANGKY
+    {
+        void DangKyKhamBenh(DANGKY dangKy);
+        DANGKY LayDangKy(int idBenhNhan);
+        dynamic LayDanhSachDangKy();
+        int LaySoBenhNhanTiepNhan();
+        void XoaDangKy(DANGKY dangKy);
+    }
+    public class DAL_DANGKY : IDAL_DANGKY
     {
         QLPMTEntities db;
         DAL_THAMSO dThamSo;

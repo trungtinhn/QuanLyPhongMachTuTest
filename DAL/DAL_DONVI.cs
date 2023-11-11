@@ -7,7 +7,19 @@ using DTO;
 
 namespace DAL
 {
-    public class DAL_DONVI
+    public interface IDAL_DONVI
+    {
+        void Add(DONVI cd);
+        void CapNhat(DONVI dONVI);
+        bool Check(string ten);
+        List<DONVI> getall();
+        DONVI GetByten(string ten);
+        DONVI getDVbyID(int idMaDonVi);
+        bool KiemTra(DONVI dONVI);
+        object LayDanhSach();
+        void Xoa(DONVI dONVI);
+    }
+    public class DAL_DONVI : IDAL_DONVI
     {
         QLPMTEntities db;
         public DAL_DONVI()

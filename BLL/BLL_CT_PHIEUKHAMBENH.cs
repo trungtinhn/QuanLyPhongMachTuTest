@@ -11,36 +11,40 @@ namespace BLL
 {
     public class BLL_CT_PHIEUKHAMBENH
     {
-        DAL_CT_PHIEUKHAMBENH dCTPhieuKhamBenhAL;
+        private IDAL_CTPHIEUKHAMBENH dCTPhieuKhamBenhDAL;
+
+        public BLL_CT_PHIEUKHAMBENH(IDAL_CTPHIEUKHAMBENH dalCTPhieuKhamBenh)
+        {
+            dCTPhieuKhamBenhDAL = dalCTPhieuKhamBenh;
+        }
 
         public BLL_CT_PHIEUKHAMBENH()
         {
-            dCTPhieuKhamBenhAL = new DAL_CT_PHIEUKHAMBENH();
         }
+
 
         public bool ThemCTPKB(CT_PHIEUKHAMBENH cTPKB)
         {
             try
             {
-                dCTPhieuKhamBenhAL.ThemCTPKB(cTPKB);
+                dCTPhieuKhamBenhDAL.ThemCTPKB(cTPKB);
                 return true;
             }catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
                 return false;
             }
         }
 
         public dynamic LayDanhSachThuoc(int soPhieuKhamBenh)
         {
-            return dCTPhieuKhamBenhAL.LayDanhSachThuoc(soPhieuKhamBenh);
+            return dCTPhieuKhamBenhDAL.LayDanhSachThuoc(soPhieuKhamBenh);
         }
 
         public bool SuaCTPKB(CT_PHIEUKHAMBENH cTPKB)
         {
             try
             {
-                dCTPhieuKhamBenhAL.SuaCTPKB(cTPKB);
+                dCTPhieuKhamBenhDAL.SuaCTPKB(cTPKB);
                 return true;
             }
             catch
@@ -53,7 +57,7 @@ namespace BLL
         {
             try
             {
-                dCTPhieuKhamBenhAL.XoaCTPKB(cTPKB);
+                dCTPhieuKhamBenhDAL.XoaCTPKB(cTPKB);
                 return true;
             }
             catch
@@ -64,7 +68,7 @@ namespace BLL
 
         public dynamic LayTheoThuoc(int idThuoc)
         {
-            return dCTPhieuKhamBenhAL.LayTheoThuoc(idThuoc);
+            return dCTPhieuKhamBenhDAL.LayTheoThuoc(idThuoc);
         }
     }
 }

@@ -13,17 +13,20 @@ namespace BLL
 {
     public class BLL_DONVI
     {
-        DAL_DONVI dDonViBLL;
+        private IDAL_DONVI dDonViDAL;
 
+        public BLL_DONVI(IDAL_DONVI dalDonVi)
+        {
+            dDonViDAL = dalDonVi;
+        }
 
         public BLL_DONVI()
         {
-            dDonViBLL = new DAL_DONVI();
         }
 
         public void LayDanhSach(DataGridView dgv)
         {
-            dgv.DataSource = dDonViBLL.LayDanhSach();
+            dgv.DataSource = dDonViDAL.LayDanhSach();
             dgv.Columns[0].HeaderText = "Tên ID";
             dgv.Columns[1].HeaderText = "Mã Đơn Vị";
             dgv.Columns[2].HeaderText = "Tên Đơn Vị";
@@ -34,7 +37,7 @@ namespace BLL
         {
             try
             {
-                dDonViBLL.Add(cd);
+                dDonViDAL.Add(cd);
                 return true;
             }
             catch
@@ -46,16 +49,16 @@ namespace BLL
 
         public bool Check(string ten)
         {
-            if (dDonViBLL.Check(ten) == true) return true;
+            if (dDonViDAL.Check(ten) == true) return true;
             else return false;
         }
         public bool CapNhat(DONVI dONVI)
         {
-            if (dDonViBLL.KiemTra(dONVI))
+            if (dDonViDAL.KiemTra(dONVI))
             {
                 try
                 {
-                    dDonViBLL.CapNhat(dONVI);
+                    dDonViDAL.CapNhat(dONVI);
                     return true;
                 }
                 catch (DbUpdateException ex)
@@ -74,11 +77,11 @@ namespace BLL
         //XOA
         public bool Xoa(DONVI dONVI)
         {
-            if (dDonViBLL.KiemTra(dONVI))
+            if (dDonViDAL.KiemTra(dONVI))
             {
                 try
                 {
-                    dDonViBLL.Xoa(dONVI);
+                    dDonViDAL.Xoa(dONVI);
                     return true;
                 }
                 catch (DbUpdateException ex)
@@ -94,7 +97,7 @@ namespace BLL
 
         public bool TracuuCD(DONVI cd)
         {
-            if (dDonViBLL.KiemTra(cd))
+            if (dDonViDAL.KiemTra(cd))
             {
                 return true;
             }
@@ -107,16 +110,16 @@ namespace BLL
 
         public List<DONVI> GetAllThuoc()
         {
-            return dDonViBLL.getall();
+            return dDonViDAL.getall();
         }
         public DONVI GetByTen(string ten)
         {
-            return dDonViBLL.GetByten(ten);
+            return dDonViDAL.GetByten(ten);
         }
 
         public DONVI getDVbyID(int idMaDonVi)
         {
-            return dDonViBLL.getDVbyID(idMaDonVi);
+            return dDonViDAL.getDVbyID(idMaDonVi);
         }
     }
 

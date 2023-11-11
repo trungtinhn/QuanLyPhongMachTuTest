@@ -13,17 +13,21 @@ namespace BLL
 {
     public class BLL_CACHDUNG
     {
-        DAL_CACHDUNG dCachDungBLL;
-        public BLL_CACHDUNG()
+        private IDAL_CACHDUNG dCachDungDAL;
+
+        public BLL_CACHDUNG(IDAL_CACHDUNG dalCachDung)
         {
-            dCachDungBLL = new DAL_CACHDUNG();
+            dCachDungDAL = dalCachDung;
         }
 
+        public BLL_CACHDUNG()
+        {
+        }
 
         public void LayDanhSach(DataGridView dgv)
         {
 
-            dgv.DataSource = dCachDungBLL.LayDanhSach();
+            dgv.DataSource = dCachDungDAL.LayDanhSach();
             dgv.Columns[0].HeaderText = "Tên ID";
             dgv.Columns[1].HeaderText = "Mã Cách Dùng";
             dgv.Columns[2].HeaderText = "Tên Cách Dùng";
@@ -35,7 +39,7 @@ namespace BLL
         {
             try
             {
-                dCachDungBLL.AddCachDung(cd);
+                dCachDungDAL.AddCachDung(cd);
                 return true;
             }
             catch
@@ -48,7 +52,7 @@ namespace BLL
 
         public bool CheckCachDung(string ten)
         {
-            if (dCachDungBLL.CheckCachDung(ten) == true) return true;
+            if (dCachDungDAL.CheckCachDung(ten) == true) return true;
             else return false;
         }
 
@@ -56,16 +60,15 @@ namespace BLL
 
         public bool CapNhatCachDung(CACHDUNG cACHDUNG)
         {
-            if (dCachDungBLL.KiemTraCachDung(cACHDUNG))
+            if (dCachDungDAL.KiemTraCachDung(cACHDUNG))
             {
                 try
                 {
-                    dCachDungBLL.CapNhatCachDung(cACHDUNG);
+                    dCachDungDAL.CapNhatCachDung(cACHDUNG);
                     return true;
                 }
-                catch (DbUpdateException ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
                     return false;
                 }
             }
@@ -78,16 +81,15 @@ namespace BLL
         //XOA
         public bool XoaCachDung(CACHDUNG cACHDUNG)
         {
-            if (dCachDungBLL.KiemTraCachDung(cACHDUNG))
+            if (dCachDungDAL.KiemTraCachDung(cACHDUNG))
             {
                 try
                 {
-                    dCachDungBLL.XoaCachDung(cACHDUNG);
+                    dCachDungDAL.XoaCachDung(cACHDUNG);
                     return true;
                 }
-                catch (DbUpdateException ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
                     return false;
                 }
             }
@@ -99,7 +101,7 @@ namespace BLL
         //TRA CUU
         public bool TracuuCD(CACHDUNG cd)
         {
-            if (dCachDungBLL.KiemTraCachDung(cd))
+            if (dCachDungDAL.KiemTraCachDung(cd))
             {
                 return true;
             }
@@ -111,18 +113,18 @@ namespace BLL
 
         public List<CACHDUNG> GetAllThuoc()
         {
-            return dCachDungBLL.getall();
+            return dCachDungDAL.getall();
         }
 
 
         public CACHDUNG GetByTen(string ten)
         {
-            return dCachDungBLL.GetByTen(ten);
+            return dCachDungDAL.GetByTen(ten);
         }
 
         public CACHDUNG getCDbyID(int idMaCachDung)
         {
-            return dCachDungBLL.getCDbyID(idMaCachDung);
+            return dCachDungDAL.getCDbyID(idMaCachDung);
         }
     }
 }

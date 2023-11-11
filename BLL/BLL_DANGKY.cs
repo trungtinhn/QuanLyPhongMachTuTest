@@ -11,24 +11,27 @@ namespace BLL
 {
     public class BLL_DANGKY
     {
-        DAL_DANGKY dDanhKyDAL;
-      
+        private IDAL_DANGKY dDangKyDAL;
+
+        public BLL_DANGKY(IDAL_DANGKY dalDangKy)
+        {
+            dDangKyDAL = dalDangKy;
+        }
+
         public BLL_DANGKY()
         {
-            dDanhKyDAL = new DAL_DANGKY();
-           
         }
 
         public dynamic LayDanhSachDangKy()
         {
-            return dDanhKyDAL.LayDanhSachDangKy();
+            return dDangKyDAL.LayDanhSachDangKy();
         }
 
         public bool DangKyKhamBenh(DANGKY dangKy)
         {
             try
             {
-                dDanhKyDAL.DangKyKhamBenh(dangKy);
+                dDangKyDAL.DangKyKhamBenh(dangKy);
                 return true;
             }
             catch (Exception ex)
@@ -39,17 +42,17 @@ namespace BLL
 
         public void XoaDangKy(DANGKY dangKy)
         {
-            dDanhKyDAL.XoaDangKy(dangKy);
+            dDangKyDAL.XoaDangKy(dangKy);
         }
 
         public DANGKY LayDangKy(int idBenhNhan)
         {
-            return dDanhKyDAL.LayDangKy(idBenhNhan);
+            return dDangKyDAL.LayDangKy(idBenhNhan);
         }
 
         public int LaySoBenhNhanTiepNhan()
         {
-           return dDanhKyDAL.LaySoBenhNhanTiepNhan();
+           return dDangKyDAL.LaySoBenhNhanTiepNhan();
         }
     }
 }

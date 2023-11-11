@@ -7,7 +7,15 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DAL_CT_PHIEUKHAMBENH
+    public interface IDAL_CTPHIEUKHAMBENH
+    {
+        dynamic LayDanhSachThuoc(int soPhieuKhamBenh);
+        dynamic LayTheoThuoc(int idThuoc);
+        void SuaCTPKB(CT_PHIEUKHAMBENH cTPKB);
+        void ThemCTPKB(CT_PHIEUKHAMBENH cTPKB);
+        void XoaCTPKB(CT_PHIEUKHAMBENH cTPKB);
+    }
+    public class DAL_CT_PHIEUKHAMBENH : IDAL_CTPHIEUKHAMBENH
     {
         QLPMTEntities db;
         public DAL_CT_PHIEUKHAMBENH()

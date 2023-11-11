@@ -7,7 +7,19 @@ using DTO;
 
 namespace DAL
 {
-    public class DAL_CACHDUNG
+    public interface IDAL_CACHDUNG
+    {
+        void AddCachDung(CACHDUNG cd);
+        void CapNhatCachDung(CACHDUNG cACHDUNG);
+        bool CheckCachDung(string ten);
+        List<CACHDUNG> getall();
+        CACHDUNG GetByTen(string ten);
+        CACHDUNG getCDbyID(int idMaCachDung);
+        bool KiemTraCachDung(CACHDUNG cACHDUNG);
+        object LayDanhSach();
+        void XoaCachDung(CACHDUNG cACHDUNG);
+    }
+    public class DAL_CACHDUNG : IDAL_CACHDUNG
     {
         QLPMTEntities db;
 
@@ -45,8 +57,16 @@ namespace DAL
         //ADD
         public void AddCachDung(CACHDUNG cd)
         {
-            db.CACHDUNGs.Add(cd);
-            db.SaveChanges();
+            try
+            {
+                db.CACHDUNGs.Add(cd);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw; // Rethrow the exception to signal that the addition failed
+            }
         }
 
 

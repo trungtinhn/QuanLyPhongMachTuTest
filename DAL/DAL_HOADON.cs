@@ -7,7 +7,15 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DAL_HOADON
+    public interface IDAL_HOADON
+    {
+        void CapNhatThanhToan(int id);
+        dynamic LayDanhSachHoaDon(int idBenhNhan);
+        HOADON LayHoaDon(int soPhieuKhamBenh);
+        void TaoHoaDon(HOADON hoaDon);
+        int TongDoanhThuNgay(int ngay, int thang, int nam);
+    }
+    public class DAL_HOADON : IDAL_HOADON
     {
         QLPMTEntities db;
         DAL_THAMSO thamSoDAL;

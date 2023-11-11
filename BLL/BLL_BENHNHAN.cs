@@ -8,23 +8,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static DAL.DAL_BENHNHAN;
 
 namespace BLL
 {
     public class BLL_BENHNHAN
     {
-        DAL_BENHNHAN dBenhNhanDAL;
+        private IDAL_BENHNHAN dBenhNhanDAL;
 
+        public BLL_BENHNHAN(IDAL_BENHNHAN dal)
+        {
+            dBenhNhanDAL = dal;
+        }
 
         public BLL_BENHNHAN()
         {
-            dBenhNhanDAL = new DAL_BENHNHAN();
+
         }
 
         public dynamic LayDanhSachBenhNhan(string kieuLoc, string giaTri, DateTime ngaySinh)
         {
-             return dBenhNhanDAL.LayDanhSachBenhNhan(kieuLoc, giaTri, ngaySinh);
-
+            return dBenhNhanDAL.LayDanhSachBenhNhan(kieuLoc, giaTri, ngaySinh);
         }
 
         public bool ThemBenhNhan(BENHNHAN benhNhan)
@@ -50,9 +54,8 @@ namespace BLL
                     dBenhNhanDAL.CapNhatBenhNhan(benhNhan);
                     return true;
                 }
-                catch (DbUpdateException ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
                     return false;
                 }
             }
@@ -71,9 +74,8 @@ namespace BLL
                     dBenhNhanDAL.XoaBenhNhan(benhNhan);
                     return true;
                 }
-                catch (DbUpdateException ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
                     return false;
                 }
             }
