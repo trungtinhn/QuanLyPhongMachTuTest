@@ -1,6 +1,7 @@
 ﻿using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,11 @@ namespace DAL
         public DAL_CT_PHIEUKHAMBENH()
         {
             db = new QLPMTEntities();
+        }
+
+        public DAL_CT_PHIEUKHAMBENH(QLPMTEntities dbContext)
+        {
+            this.db = dbContext;
         }
 
         public void ThemCTPKB(CT_PHIEUKHAMBENH cTPKB)
