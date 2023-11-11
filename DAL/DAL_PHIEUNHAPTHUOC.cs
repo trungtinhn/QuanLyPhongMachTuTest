@@ -7,12 +7,28 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DAL_PHIEUNHAPTHUOC
+    public interface IDAL_PHIEUNHAPTHUOC
+    {
+        List<PHIEUNHAPTHUOC> GetData();
+        PHIEUNHAPTHUOC GetDataByMa(int maPhieu);
+        int GetMaMax();
+        bool ThemPhieu(PHIEUNHAPTHUOC phieu);
+        void LuuPhieuNhapThuoc(PHIEUNHAPTHUOC pnt);
+        bool XoaPhieuNhap(int soPhieu);
+        int TongTien(int i);
+        int getTongtien(PHIEUNHAPTHUOC p);
+
+    }
+    public class DAL_PHIEUNHAPTHUOC: IDAL_PHIEUNHAPTHUOC
     {
         QLPMTEntities db;
         public DAL_PHIEUNHAPTHUOC()
         {
             db = new QLPMTEntities();
+        }
+        public DAL_PHIEUNHAPTHUOC(QLPMTEntities qLPMTEntities)
+        {
+            db = qLPMTEntities;
         }
         public List<PHIEUNHAPTHUOC> GetData()
         {
