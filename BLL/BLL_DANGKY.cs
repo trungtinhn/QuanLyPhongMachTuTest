@@ -20,6 +20,7 @@ namespace BLL
 
         public BLL_DANGKY()
         {
+            dDangKyDAL = new DAL_DANGKY();
         }
 
         public dynamic LayDanhSachDangKy()

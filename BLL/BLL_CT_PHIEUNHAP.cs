@@ -19,6 +19,7 @@ namespace BLL
 
         public BLL_CT_PHIEUNHAP()
         {
+            dCTPhieuNhapDAL = new DAL_CT_PHIEUNHAP();
         }
 
         public List<CT_PHIEUNHAP> GetCTByMa(int ma)

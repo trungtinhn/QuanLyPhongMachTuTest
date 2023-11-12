@@ -22,6 +22,7 @@ namespace BLL
 
         public BLL_CACHDUNG()
         {
+            dCachDungDAL = new DAL_CACHDUNG();
         }
 
         public void LayDanhSach(DataGridView dgv)

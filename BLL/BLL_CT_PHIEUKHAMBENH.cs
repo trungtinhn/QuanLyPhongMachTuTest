@@ -20,6 +20,7 @@ namespace BLL
 
         public BLL_CT_PHIEUKHAMBENH()
         {
+
         }
 
 

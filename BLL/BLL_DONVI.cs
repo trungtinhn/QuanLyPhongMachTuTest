@@ -22,6 +22,7 @@ namespace BLL
 
         public BLL_DONVI()
         {
+            dDonViDAL = new DAL_DONVI();
         }
 
         public void LayDanhSach(DataGridView dgv)
