@@ -19,6 +19,7 @@ namespace BLL
 
         public BLL_HOADON()
         {
+            dHoaDonDAL = new DAL_HOADON();
         }
 
         public bool TaoHoaDon(HOADON hoaDon)

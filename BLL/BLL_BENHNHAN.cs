@@ -23,7 +23,7 @@ namespace BLL
 
         public BLL_BENHNHAN()
         {
-
+            dBenhNhanDAL = new DAL_BENHNHAN();
         }
 
         public dynamic LayDanhSachBenhNhan(string kieuLoc, string giaTri, DateTime ngaySinh)
