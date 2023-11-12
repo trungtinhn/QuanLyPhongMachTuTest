@@ -8,15 +8,17 @@ using DTO;
 namespace UnitTest
 {
     [TestClass]
-    public class DAL_CTPHIEUNHAPTHUOCTests
+    public class DAL_PHIEUNHAPTHUOCTests
     {
         private Mock<QLPMTEntities> mockDbContext;
         private DAL_PHIEUNHAPTHUOC phieuNhapThuocDAL;
+        private Mock<IDAL_CTPHIEUNHAP> dalCTP;
         [TestInitialize]
         public void SetUp()
         {
             mockDbContext = new Mock<QLPMTEntities>();
-            phieuNhapThuocDAL = new DAL_PHIEUNHAPTHUOC(mockDbContext.Object);
+            dalCTP = new Mock<IDAL_CTPHIEUNHAP>();
+            phieuNhapThuocDAL = new DAL_PHIEUNHAPTHUOC(mockDbContext.Object, dalCTP.Object);
         }
         private static DbSet<T> MockDbSet<T>(List<T> data) where T : class
         {
@@ -186,7 +188,35 @@ namespace UnitTest
 
         }
         [TestMethod]
-        public void getTongtien_ReturnsTongTienFromPHIEUNHAPTHUOC()
+        public void TongTien_ReturnsSumOfCT_PHIEUNHAP_ThanhTien()
+        {
+            CT_PHIEUNHAP model1 = new CT_PHIEUNHAP
+            {
+                SoPhieuNhapThuoc = 1,
+                idMaThuoc = 3,
+                DonGiaNhap = 7000,
+                ThanhTien = 14000,
+                SoLuongNhap = 2
+            };
+            CT_PHIEUNHAP model2 = new CT_PHIEUNHAP
+            {
+                SoPhieuNhapThuoc = 1,
+                idMaThuoc = 5,
+                DonGiaNhap = 7000,
+                ThanhTien = 21000,
+                SoLuongNhap = 3
+            };
+
+            var danhSachCT_Phieu = new List<CT_PHIEUNHAP> { model1, model2 };
+            mockDbContext.Setup(d => d.CT_PHIEUNHAP).Returns(MockDbSet(danhSachCT_Phieu));
+            var phieuNhap1 = new PHIEUNHAPTHUOC() { SoPhieuNhapThuoc = 1, TongTien = 0, NgayNhap = new DateTime(2023, 11, 12), TrangThai = 1 };
+
+            var result = phieuNhapThuocDAL.TongTien(1);
+
+            Assert.AreEqual(35000, result);
+        }
+        [TestMethod]
+        public void GetTongtien_ReturnsTongTienFromPHIEUNHAPTHUOC()
         {
             var phieuNhap1 = new PHIEUNHAPTHUOC() { SoPhieuNhapThuoc = 1, TongTien = 1000000, NgayNhap = new DateTime(2023, 11, 12), TrangThai = 1 };
             var phieuNhap2 = new PHIEUNHAPTHUOC() { SoPhieuNhapThuoc = 7, TongTien = 2000000, NgayNhap = new DateTime(2023, 11, 12), TrangThai = 0 };

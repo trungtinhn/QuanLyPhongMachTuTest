@@ -16,6 +16,7 @@ namespace DAL
         BENHNHAN LayThongTinBenhNhan(int idBenhNhan);
         void ThemBenhNhan(BENHNHAN benhNhan);
         void XoaBenhNhan(BENHNHAN benhNhan);
+        dynamic LocBenhNhan(string kieuLoc, string giaTri);
     }
     public class DAL_BENHNHAN : IDAL_BENHNHAN
     {
@@ -53,18 +54,6 @@ namespace DAL
                 danhSach = db.BENHNHANs.Where(p => p.DiaChi.Contains(giaTri)).ToList();
             }
 
-
-
-            //var danhsach = db.BENHNHANs.Select(s => new
-            //{
- 
-            //    s.MaBenhNhan,
-            //    s.HoTenBenhNhan,
-            //    s.GioiTinh,
-            //    s.NgaySinh,
-            //    s.DiaChi,
-               
-            //}).ToList();
 
             return danhSach;
         }

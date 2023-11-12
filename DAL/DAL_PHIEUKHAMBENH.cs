@@ -8,18 +8,35 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DAL_PHIEUKHAMBENH
+    public interface IDAL_PHIEUKHAMBENH
+    {
+        void ThemPhieuKhamBenh(PHIEUKHAMBENH pkb);
+        dynamic LayDanhSachPhieuKhamBenh(string kieuLoc, string giaTri, DateTime start, DateTime end);
+        PHIEUKHAMBENH LayPhieuKhamBenh(int soPhieuKhamBenh);
+        void TinhTongTien(int soPhieuKhamBenh);
+        void LuuPhieuKhamBenh(PHIEUKHAMBENH pkb);
+        dynamic ListTheoNgay(int ngay, int thang, int nam);
+
+    }
+    public class DAL_PHIEUKHAMBENH: IDAL_PHIEUKHAMBENH
     {
         QLPMTEntities db;
-        DAL_CT_PHIEUKHAMBENH chiTietPKBDAL;
-        DAL_BENHNHAN benhNhanDAL;
-        DAL_BENH benhDAL;
+        IDAL_CTPHIEUKHAMBENH chiTietPKBDAL;
+        IDAL_BENHNHAN benhNhanDAL;
+        IDAL_BENH benhDAL;
         public DAL_PHIEUKHAMBENH()
         {
             db = new QLPMTEntities();
             chiTietPKBDAL = new DAL_CT_PHIEUKHAMBENH();
             benhNhanDAL = new DAL_BENHNHAN();
             benhDAL = new DAL_BENH();
+        }
+        public DAL_PHIEUKHAMBENH(QLPMTEntities db, IDAL_CTPHIEUKHAMBENH chiTietPKBDAL,IDAL_BENHNHAN benhNhanDAL, IDAL_BENH benhDAL)
+        {
+            this.db = db;
+            this.chiTietPKBDAL = chiTietPKBDAL;
+            this.benhNhanDAL = benhNhanDAL;
+            this.benhDAL = benhDAL;
         }
 
         public void ThemPhieuKhamBenh(PHIEUKHAMBENH pkb)
@@ -63,16 +80,6 @@ namespace DAL
                     }
                 }
             }
-
-            //List<PHIEUKHAMBENH> phieus = new List<PHIEUKHAMBENH>();
-
-            //foreach (var s in danhSach)
-            //{
-            //    PHIEUKHAMBENH pkb = db.PHIEUKHAMBENHs.Find(s.SoPhieuKhamBenh);
-            //    phieus.Add(pkb);
-            //}
-
-            //return phieus;
 
             return danhSach;
         }
