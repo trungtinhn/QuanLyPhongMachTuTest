@@ -26,10 +26,10 @@ namespace UnitTest
             dalBenhNhan = new DAL_BENHNHAN(dbContextMock.Object);
 
             var benhNhanList = new List<BENHNHAN>
-    {
-        new BENHNHAN { id = 1, MaBenhNhan = "BN1", HoTenBenhNhan = "Benh Nhan 1", GioiTinh = "Nam", NgaySinh = new DateTime(1990, 1, 1), DiaChi = "Dia chi 1" },
-        new BENHNHAN { id = 2, MaBenhNhan = "BN2", HoTenBenhNhan = "Benh Nhan 2", GioiTinh = "Nu", NgaySinh = new DateTime(1995, 5, 5), DiaChi = "Dia chi 2" }
-    };
+            {
+                new BENHNHAN { id = 1, MaBenhNhan = "BN1", HoTenBenhNhan = "Benh Nhan 1", GioiTinh = "Nam", NgaySinh = new DateTime(1990, 1, 1), DiaChi = "Dia chi 1" },
+                new BENHNHAN { id = 2, MaBenhNhan = "BN2", HoTenBenhNhan = "Benh Nhan 2", GioiTinh = "Nu", NgaySinh = new DateTime(1995, 5, 5), DiaChi = "Dia chi 2" }
+            };
 
             benhNhanDbSetMock.As<IQueryable<BENHNHAN>>().Setup(m => m.Provider).Returns(benhNhanList.AsQueryable().Provider);
             benhNhanDbSetMock.As<IQueryable<BENHNHAN>>().Setup(m => m.Expression).Returns(benhNhanList.AsQueryable().Expression);

@@ -10,12 +10,15 @@ namespace BLL
 {
     public class BLL_PHIEUNHAPTHUOC
     {
-        DAL_PHIEUNHAPTHUOC dPhieuNhapThuoc;
+        IDAL_PHIEUNHAPTHUOC dPhieuNhapThuoc;
         public BLL_PHIEUNHAPTHUOC()
         {
             dPhieuNhapThuoc = new DAL_PHIEUNHAPTHUOC();
         }
-
+        public BLL_PHIEUNHAPTHUOC(IDAL_PHIEUNHAPTHUOC dPhieuNhapThuoc)
+        {
+            this.dPhieuNhapThuoc = dPhieuNhapThuoc;
+        }
         public List<PHIEUNHAPTHUOC> GetData()
         {
             return dPhieuNhapThuoc.GetData();

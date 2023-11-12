@@ -10,10 +10,14 @@ namespace BLL
 {
     public class BLL_PHIEUKHAMBENH
     {
-        DAL_PHIEUKHAMBENH dPhieuKhamBenhDAL;
+        IDAL_PHIEUKHAMBENH dPhieuKhamBenhDAL;
         public BLL_PHIEUKHAMBENH() 
         {
             dPhieuKhamBenhDAL = new DAL_PHIEUKHAMBENH();
+        }
+        public BLL_PHIEUKHAMBENH(IDAL_PHIEUKHAMBENH dPhieuKhamBenhDAL)
+        {
+            this.dPhieuKhamBenhDAL = dPhieuKhamBenhDAL;
         }
 
         public bool ThemPhieuKhamBenh(PHIEUKHAMBENH pkb)

@@ -22,14 +22,16 @@ namespace DAL
     public class DAL_PHIEUNHAPTHUOC: IDAL_PHIEUNHAPTHUOC
     {
         QLPMTEntities db;
-
+        IDAL_CTPHIEUNHAP dAL_CTPHIEUNHAP;
         public DAL_PHIEUNHAPTHUOC()
         {
             db = new QLPMTEntities();
+            dAL_CTPHIEUNHAP = new DAL_CT_PHIEUNHAP();
         }
-        public DAL_PHIEUNHAPTHUOC(QLPMTEntities qLPMTEntities)
+        public DAL_PHIEUNHAPTHUOC(QLPMTEntities qLPMTEntities, IDAL_CTPHIEUNHAP dAL_CTPHIEUNHAP)
         {
             db = qLPMTEntities;
+            this.dAL_CTPHIEUNHAP = dAL_CTPHIEUNHAP;
         }
         public List<PHIEUNHAPTHUOC> GetData()
         {
