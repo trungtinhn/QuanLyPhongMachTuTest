@@ -38,20 +38,9 @@ namespace BLL
             return dPhieuNhapThuoc.ThemPhieu(phieu);
         }
 
-
-
-
-
-
-
         public bool XoaPhieuNhap(int soPhieu)
         {
-            try
-            {
-                dPhieuNhapThuoc.XoaPhieuNhap(soPhieu);
-                return true;
-            }
-            catch { return false; }
+            return dPhieuNhapThuoc.XoaPhieuNhap(soPhieu);
            
         }
         public int TongTien(int i)
@@ -66,16 +55,8 @@ namespace BLL
 
 
         public bool LuuPhieuNhapThuoc(PHIEUNHAPTHUOC pnt)
-        {
-            try
-            {
-                dPhieuNhapThuoc.LuuPhieuNhapThuoc(pnt);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+        { 
+            return dPhieuNhapThuoc.LuuPhieuNhapThuoc(pnt);
         }
     }
 }
