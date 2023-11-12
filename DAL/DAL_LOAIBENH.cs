@@ -79,6 +79,7 @@ namespace DAL
         public void CapNhatLoaiBenh(LOAIBENH loaiBenh)
         {
             LOAIBENH lb = db.LOAIBENHs.FirstOrDefault(b => b.MaLoaiBenh == loaiBenh.MaLoaiBenh);
+            if (lb == null) return;
             lb.TenLoaiBenh = loaiBenh.TenLoaiBenh;
 
             db.SaveChanges();
@@ -87,7 +88,7 @@ namespace DAL
         public void XoaLoaiBenh(LOAIBENH loaiBenh)
         {
             LOAIBENH lb = db.LOAIBENHs.FirstOrDefault(p => p.MaLoaiBenh == loaiBenh.MaLoaiBenh);
-
+            if(lb == null) return;
             var benhs = db.BENHs.Where(p => p.idMaLoaiBenh == lb.id);
 
             foreach(BENH benh in benhs)

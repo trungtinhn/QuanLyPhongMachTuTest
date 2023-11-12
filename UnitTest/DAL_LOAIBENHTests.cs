@@ -120,6 +120,7 @@ namespace UnitTest
             // Act
             dalLoaiBenh.ThemLoaiBenh(loaiBenh);
             // Assert
+            dbContextMock.Verify( d=> d.LOAIBENHs.Add(loaiBenh), Times.Once );
             dbContextMock.Verify(d => d.SaveChanges(), Times.Once());
 
         }
@@ -173,6 +174,24 @@ namespace UnitTest
             dbContextMock.Verify(db => db.SaveChanges(), Times.Once);
         }
         [TestMethod]
+        public void CapNhatLoaiBenh_NotValidLoaiBenh_UpdatesDatabase()
+        {
+            // Arrange
+            var loaiBenh1 = new LOAIBENH { id = 1, MaLoaiBenh = "LB001", TenLoaiBenh = "Loại bệnh 1" };
+            var loaiBenh2 = new LOAIBENH { id = 2, MaLoaiBenh = "LB002", TenLoaiBenh = "Loại bệnh 2" };
+            var danhSachLoaiBenh = new List<LOAIBENH> { loaiBenh1, loaiBenh2 };
+            dbContextMock.Setup(m => m.LOAIBENHs).Returns(MockDbSet(danhSachLoaiBenh));
+
+            var expected = new LOAIBENH { id = 3, MaLoaiBenh = "LB003", TenLoaiBenh = "Loại bệnh moi" };
+            dbContextMock.Setup(d => d.LOAIBENHs.Find(expected.id)).Returns(expected);
+
+            // Act
+            dalLoaiBenh.CapNhatLoaiBenh(expected);
+
+            // Assert
+            dbContextMock.Verify(db => db.SaveChanges(), Times.Never);
+        }
+        [TestMethod]
         public void XoaLoaiBenh_ValidLoaiBenh_ExistingBenh_UpdatesDatabase()
         {
             // Arrange
@@ -211,6 +230,26 @@ namespace UnitTest
             idalBenh.Verify(db => db.XoaBenh(benh1), Times.Never);
             dbContextMock.Verify(db => db.LOAIBENHs.Remove(loaiBenh1), Times.Once);
             dbContextMock.Verify(db => db.SaveChanges(), Times.Once);
+        }
+        [TestMethod]
+        public void XoaLoaiBenh_NotValidLoaiBenh_UpdatesDatabase()
+        {
+            // Arrange
+            var benh1 = new BENH { id = 3, MaBenh = "LB001", TenBenh = "Benh 3", TrieuChung = "Trieu chung 3", idMaLoaiBenh = 3, idMaThuocDacTri = 3 };
+            var danhsachbenh = new List<BENH> { benh1 };
+            var loaiBenh1 = new LOAIBENH { id = 1, MaLoaiBenh = "LB001", TenLoaiBenh = "Loại bệnh 1" };
+            var loaiBenh2 = new LOAIBENH { id = 2, MaLoaiBenh = "LB002", TenLoaiBenh = "Loại bệnh 2" };
+            var danhSachLoaiBenh = new List<LOAIBENH> { loaiBenh1, loaiBenh2 };
+            dbContextMock.Setup(m => m.LOAIBENHs).Returns(MockDbSet(danhSachLoaiBenh));
+            var loaiBenh3 = new LOAIBENH { id = 3, MaLoaiBenh = "LB003", TenLoaiBenh = "Loại bệnh 3" };
+            dbContextMock.Setup(db => db.BENHs).Returns(MockDbSet(danhsachbenh));
+            // Act
+            dalLoaiBenh.XoaLoaiBenh(loaiBenh3);
+
+            // Assert
+            idalBenh.Verify(db => db.XoaBenh(benh1), Times.Never);
+            dbContextMock.Verify(db => db.LOAIBENHs.Remove(loaiBenh1), Times.Never);
+            dbContextMock.Verify(db => db.SaveChanges(), Times.Never);
         }
         [TestMethod]
         public void LayThongTinLoaiBenh_ExistingTenLoaiBenh_ReturnsLoaiBenh()

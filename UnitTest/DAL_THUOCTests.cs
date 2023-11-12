@@ -156,6 +156,66 @@ namespace UnitTest
             Assert.AreEqual(expectedThuocs.MaThuoc, result.MaThuoc);
         }
         [TestMethod]
+        public void LayThuocByMa_ValidMaThuoc_ReturnsNull()
+        {
+            // Tạo danh sách thuốc giả lập để trả về
+            var Thuocs = new List<THUOC>
+            {
+                new THUOC()
+                {
+                    id = 1,
+                    MaThuoc = "T123",
+                    TenThuoc = "Thuốc ABC",
+                    idMaDonVi = 1,
+                    idMaCachDung = 1,
+                    SoLuongTon = 100,
+                    DonGia = 50,
+                    CongDung = "Điều trị bệnh X",
+                    HuongDanSuDung = "Dùng 2 viên mỗi ngày",
+                    idMaLoaiThuoc = 1
+                },
+                new THUOC()
+                {
+                    id = 2,
+                    MaThuoc = "T324",
+                    TenThuoc = "Thuốc ABC",
+                    idMaDonVi = 1,
+                    idMaCachDung = 1,
+                    SoLuongTon = 100,
+                    DonGia = 50,
+                    CongDung = "Điều trị bệnh X",
+                    HuongDanSuDung = "Dùng 2 viên mỗi ngày",
+                    idMaLoaiThuoc = 2
+                },
+
+            }.AsQueryable();
+            var expectedThuocs = new THUOC()
+            {
+                id = 1,
+                MaThuoc = "T123",
+                TenThuoc = "Thuốc ABC",
+                idMaDonVi = 1,
+                idMaCachDung = 1,
+                SoLuongTon = 100,
+                DonGia = 50,
+                CongDung = "Điều trị bệnh X",
+                HuongDanSuDung = "Dùng 2 viên mỗi ngày",
+                idMaLoaiThuoc = 1
+            };
+            dbSetMock.As<IQueryable<THUOC>>().Setup(m => m.Provider).Returns(Thuocs.Provider);
+            dbSetMock.As<IQueryable<THUOC>>().Setup(m => m.Expression).Returns(Thuocs.Expression);
+            dbSetMock.As<IQueryable<THUOC>>().Setup(m => m.ElementType).Returns(Thuocs.ElementType);
+            dbSetMock.As<IQueryable<THUOC>>().Setup(m => m.GetEnumerator()).Returns(Thuocs.GetEnumerator());
+
+            dbMock.Setup(m => m.THUOCs).Returns(dbSetMock.Object);
+
+            // Gọi phương thức LayDanhSachThuoc từ DAL_THUOC và kiểm tra kết quả
+            var result = dalThuoc.LayThuocByMa("KhongTonTai");
+
+            // Kiểm tra kết quả trả về
+            Assert.AreEqual(null, result);
+        }
+        [TestMethod]
         public void LayThongTinThuoc_ValidTenThuoc_ReturnsThuoc()
         {
             string TenThuoc = "ThuocABC";
@@ -216,6 +276,67 @@ namespace UnitTest
             Assert.AreEqual(expectedThuocs.MaThuoc, result.MaThuoc);
         }
         [TestMethod]
+        public void LayThongTinThuoc_NotValidTenThuoc_ReturnsThuoc()
+        {
+            string TenThuoc = "Khong Ton Tai";
+            // Tạo danh sách thuốc giả lập để trả về
+            var Thuocs = new List<THUOC>
+            {
+                new THUOC()
+                {
+                    id = 1,
+                    MaThuoc = "T123",
+                    TenThuoc = "ThuocABC",
+                    idMaDonVi = 1,
+                    idMaCachDung = 1,
+                    SoLuongTon = 100,
+                    DonGia = 50,
+                    CongDung = "Điều trị bệnh X",
+                    HuongDanSuDung = "Dùng 2 viên mỗi ngày",
+                    idMaLoaiThuoc = 1
+                },
+                new THUOC()
+                {
+                    id = 2,
+                    MaThuoc = "T324",
+                    TenThuoc = "Thuốc ABC",
+                    idMaDonVi = 1,
+                    idMaCachDung = 1,
+                    SoLuongTon = 100,
+                    DonGia = 50,
+                    CongDung = "Điều trị bệnh X",
+                    HuongDanSuDung = "Dùng 2 viên mỗi ngày",
+                    idMaLoaiThuoc = 2
+                },
+
+            }.AsQueryable();
+            var expectedThuocs = new THUOC()
+            {
+                id = 1,
+                MaThuoc = "T123",
+                TenThuoc = "ThuocABC",
+                idMaDonVi = 1,
+                idMaCachDung = 1,
+                SoLuongTon = 100,
+                DonGia = 50,
+                CongDung = "Điều trị bệnh X",
+                HuongDanSuDung = "Dùng 2 viên mỗi ngày",
+                idMaLoaiThuoc = 1
+            };
+            dbSetMock.As<IQueryable<THUOC>>().Setup(m => m.Provider).Returns(Thuocs.Provider);
+            dbSetMock.As<IQueryable<THUOC>>().Setup(m => m.Expression).Returns(Thuocs.Expression);
+            dbSetMock.As<IQueryable<THUOC>>().Setup(m => m.ElementType).Returns(Thuocs.ElementType);
+            dbSetMock.As<IQueryable<THUOC>>().Setup(m => m.GetEnumerator()).Returns(Thuocs.GetEnumerator());
+
+            dbMock.Setup(m => m.THUOCs).Returns(dbSetMock.Object);
+            // Gọi phương thức LayDanhSachThuoc từ DAL_THUOC và kiểm tra kết quả
+            var result = dalThuoc.LayThongTinThuoc(TenThuoc);
+
+            // Kiểm tra kết quả trả về
+            Assert.AreEqual(null, result);
+        }
+        [TestMethod]
+
         public void LayThuoc_ValidIdThuoc_ReturnsThuoc()
         {
             int id = 1;
@@ -262,6 +383,7 @@ namespace UnitTest
             dalThuoc.Add(thuoc);
 
             // Kiểm tra xem phương thức SaveChanges đã được gọi trên mock object dbMock hay chưa
+            dbMock.Verify(x => x.THUOCs.Add(thuoc), Times.Once());
             dbMock.Verify(x => x.SaveChanges(), Times.Once);
         }
         [TestMethod]
@@ -414,7 +536,30 @@ namespace UnitTest
             // Assert
             Assert.IsFalse(result);
 
+        }
+        [TestMethod]
+        public void KiemTra_EmptyDb_ReturnsFalse()
+        {
+            // Arange
+            var Thuocs = new List<THUOC>
+            {
+                new THUOC()
+                {
+                }
+            }.AsQueryable();
+            dbSetMock.As<IQueryable<THUOC>>().Setup(m => m.Provider).Returns(Thuocs.Provider);
+            dbSetMock.As<IQueryable<THUOC>>().Setup(m => m.Expression).Returns(Thuocs.Expression);
+            dbSetMock.As<IQueryable<THUOC>>().Setup(m => m.ElementType).Returns(Thuocs.ElementType);
+            dbSetMock.As<IQueryable<THUOC>>().Setup(m => m.GetEnumerator()).Returns(Thuocs.GetEnumerator());
+            dbMock.Setup(m => m.THUOCs).Returns((DbSet<THUOC>)null);
 
+            var expancted = new THUOC()
+            {
+            };
+            // Act
+            var result = dalThuoc.KiemTra(expancted);
+            // Assert
+            Assert.IsFalse(result);
         }
         [TestMethod]
         public void KiemTra_ExistingThuoc_ReturnsTrue()
@@ -434,7 +579,20 @@ namespace UnitTest
                     CongDung = "Điều trị bệnh X",
                     HuongDanSuDung = "Dùng 2 viên mỗi ngày",
                     idMaLoaiThuoc = 1
-                }
+                },
+                new THUOC()
+                {
+                    id = 3,
+                    MaThuoc = "T12rjj",
+                    TenThuoc = "ThuocABC",
+                    idMaDonVi = 1,
+                    idMaCachDung = 1,
+                    SoLuongTon = 3,
+                    DonGia = 50,
+                    CongDung = "Điều trị bệnh X",
+                    HuongDanSuDung = "Dùng 2 viên mỗi ngày",
+                    idMaLoaiThuoc = 1
+                },
             }.AsQueryable();
             dbSetMock.As<IQueryable<THUOC>>().Setup(m => m.Provider).Returns(Thuocs.Provider);
             dbSetMock.As<IQueryable<THUOC>>().Setup(m => m.Expression).Returns(Thuocs.Expression);

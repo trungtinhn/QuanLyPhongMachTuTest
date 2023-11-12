@@ -20,7 +20,7 @@ namespace BLL
 
         public BLL_CT_PHIEUKHAMBENH()
         {
-
+            dCTPhieuKhamBenhDAL = new DAL_CT_PHIEUKHAMBENH();
         }
 
 

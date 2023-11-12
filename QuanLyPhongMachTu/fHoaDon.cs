@@ -24,7 +24,6 @@ namespace QuanLyPhongMachTu
         public fHoaDon(HOADON data)
         {
             _data = data;
-
             dPhieuKhamBenhBLL = new BLL_PHIEUKHAMBENH();
             dBenhNhanBLL = new BLL_BENHNHAN();
             dCTPKBBLL = new BLL_CT_PHIEUKHAMBENH();
@@ -33,7 +32,6 @@ namespace QuanLyPhongMachTu
             InitializeComponent();
 
         }
-
         private void fHoaDon_Load(object sender, EventArgs e)
         {
             PHIEUKHAMBENH pkb = dPhieuKhamBenhBLL.LayPhieuKhamBenh(_data.SoPhieuKhamBenh.Value);
@@ -53,9 +51,7 @@ namespace QuanLyPhongMachTu
             {
                 btnThanhToan.Text = "Thoát";
             }
-
             HienThiDanhSachThuoc();
-
         }
 
         public void HienThiDanhSachThuoc()
@@ -79,14 +75,9 @@ namespace QuanLyPhongMachTu
 
                 dt.Rows.Add(i, thuoc.MaThuoc, thuoc.TenThuoc, pkb.SoLuong, pkb.ThanhTien);
             }
-
             dgvHoaDon.DataSource = dt;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {

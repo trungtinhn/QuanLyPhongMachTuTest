@@ -25,14 +25,13 @@ namespace BLL
             dDonViDAL = new DAL_DONVI();
         }
 
-        public void LayDanhSach(DataGridView dgv)
-        {
-            dgv.DataSource = dDonViDAL.LayDanhSach();
-            dgv.Columns[0].HeaderText = "Tên ID";
-            dgv.Columns[1].HeaderText = "Mã Đơn Vị";
-            dgv.Columns[2].HeaderText = "Tên Đơn Vị";
-        }
-
+        //public void LayDanhSach(DataGridView dgv)
+        //{
+        //    dgv.DataSource = dDonViDAL.LayDanhSach();
+        //    dgv.Columns[0].HeaderText = "Tên ID";
+        //    dgv.Columns[1].HeaderText = "Mã Đơn Vị";
+        //    dgv.Columns[2].HeaderText = "Tên Đơn Vị";
+        //}
 
         public bool Add(DONVI cd)
         {

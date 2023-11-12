@@ -60,12 +60,6 @@ namespace QuanLyPhongMachTu.UserControls
             }
 
             dgvThongTinBN.DataSource = dt;
-
-            ////dgvThongTinBN.Columns[0].HeaderText = "Mã bệnh nhân";
-            ////dgvThongTinBN.Columns[1].HeaderText = "Họ tên";
-            ////dgvThongTinBN.Columns[2].HeaderText = "Giới tính";
-            ////dgvThongTinBN.Columns[3].HeaderText = "Ngày sinh";
-            ////dgvThongTinBN.Columns[4].HeaderText = "Địa chỉ";
         }
 
         private bool KiemTraNhapLieu()
@@ -170,11 +164,7 @@ namespace QuanLyPhongMachTu.UserControls
 
                 //dtimeNgaySinh.Value = (DateTime) row.Cells[3].Value;
                 txtDiachiBN.Text = row.Cells[4].Value.ToString();
-
-
-
             }
-
             HienThiDanhSachHoaDon();
 
         }
@@ -205,7 +195,6 @@ namespace QuanLyPhongMachTu.UserControls
                 MessageBox.Show("Xóa bệnh nhân thất bại!");
             }
         }
-
         private void btnKhongLuu_Click(object sender, EventArgs e)
         {
             txtMaBN.Text = "";
@@ -215,7 +204,6 @@ namespace QuanLyPhongMachTu.UserControls
             DateTime dateTime = DateTime.Now;
             dtimeNgaySinh.Value = dateTime;
             txtDiachiBN.Text = "";
-
         }
 
         private bool KiemTraNhapLieuDK()
@@ -289,7 +277,6 @@ namespace QuanLyPhongMachTu.UserControls
 
                 dt.Rows.Add(i, hOADON.SoPhieuKhamBenh, pkb.NgayKham, hOADON.TienKham + hOADON.TienThuoc, hOADON.TrangThai);
 
-
             }
 
             dgvDanhSachHoaDon.DataSource = dt;
@@ -320,7 +307,6 @@ namespace QuanLyPhongMachTu.UserControls
 
             }
         }
-
         private void btnTraCuu_Click(object sender, EventArgs e)
         {
             HienThiLenDGVBenhNhan();

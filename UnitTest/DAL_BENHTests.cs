@@ -60,12 +60,12 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void Test_CapNhatBenh()
+        public void Test_CapNhatBenh_ExistingBenh()
         {
             // Arrange
             var benh = new BENH { id = 1, MaBenh = "B1", TenBenh = "Benh mot", TrieuChung = "Trieu chung 1", idMaLoaiBenh = 1, idMaThuocDacTri = 1 };
-
-            dbContextMock.Setup(m => m.BENHs.Find(benh.id)).Returns(benh);
+            dbContextMock.Setup(m => m.BENHs).Returns(benhDbSetMock.Object);
+           
 
             // Act
             dalBenh.CapNhatBenh(benh);
@@ -75,23 +75,31 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void Test_XoaBenh()
+        public void Test_XoaBenh_Existing()
         {
             // Arrange
             var benh = new BENH { id = 2, MaBenh = "B2", TenBenh = "Benh 2", TrieuChung = "Trieu chung 2", idMaLoaiBenh = 2, idMaThuocDacTri = 2 };
-
-            dbContextMock.Setup(m => m.BENHs.Find(benh.id)).Returns(benh);
-            dbContextMock.Setup(m => m.BENHs.Remove(benh));
             // Act
             dalBenh.XoaBenh(benh);
             // Assert
             dbContextMock.Verify(m => m.SaveChanges(), Times.Once);
         }
         [TestMethod]
-        public void Test_KiemTraBenh_ExistingBenh()
+        public void Test_XoaBenh_NotExisting()
         {
             // Arrange
-            var existingBenh = new BENH { id = 2, MaBenh = "B2", TenBenh = "Benh 2", TrieuChung = "Trieu chung 2", idMaLoaiBenh = 2, idMaThuocDacTri = 2 };
+            var benh = new BENH { id = 3, MaBenh = "B3", TenBenh = "Benh 3", TrieuChung = "Trieu chung 3", idMaLoaiBenh = 3, idMaThuocDacTri = 3 };
+            // Act
+            dalBenh.XoaBenh(benh);
+            // Assert
+            dbContextMock.Verify(m => m.SaveChanges(), Times.Never);
+            dbContextMock.Verify(m => m.BENHs.Remove(benh), Times.Never);
+        }
+        [TestMethod]
+        public void Test_KiemTraBenh_ExistingBenh_RetuenTrue()
+        {
+            // Arrange
+            var existingBenh = new BENH { id = 1, MaBenh = "B1", TenBenh = "Benh 1", TrieuChung = "Trieu chung 1", idMaLoaiBenh = 1, idMaThuocDacTri = 1 };
 
             dbContextMock.Setup(m => m.BENHs.Find(existingBenh.id)).Returns(existingBenh);
 
@@ -102,7 +110,7 @@ namespace UnitTest
             Assert.IsTrue(result);
         }
         [TestMethod]
-        public void Test_KiemTraBenh_NotExistingBenh()
+        public void Test_KiemTraBenh_NotExistingBenh_ReturnFalse()
         {
             // Arrange
             var notexistingBenh = new BENH { id = 4, MaBenh = "B4", TenBenh = "Benh 4", TrieuChung = "Trieu chung 4", idMaLoaiBenh = 4, idMaThuocDacTri = 4 };
@@ -115,6 +123,19 @@ namespace UnitTest
             Assert.IsFalse(result);
         }
         [TestMethod]
+        public void Test_KiemTraBenh_Exception_ReturnFalse()
+        {
+            // Arrange
+            var notexistingBenh = new BENH { id = 4, MaBenh = "B4", TenBenh = "Benh 4", TrieuChung = "Trieu chung 4", idMaLoaiBenh = 4, idMaThuocDacTri = 4 };
+            dbContextMock.Setup(m => m.BENHs.Find(notexistingBenh.id)).Returns(notexistingBenh);
+            // Act
+            var result = dalBenh.KiemTraBenh((BENH)null);
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+        [TestMethod]
+
         public void Test_LayBenh_ByIdBenh_Existing()
         {
             // Arrange
@@ -128,7 +149,7 @@ namespace UnitTest
             Assert.AreEqual(expectedBenh.id, result.id);
         }
         [TestMethod]
-        public void Test_LayBenh_ByIdBenh_NotExisting()
+        public void Test_LayBenh_ByIdBenh_NotExisting_ReturnNull()
         {
             //Arrange
             var idBenh = 3;
@@ -141,7 +162,7 @@ namespace UnitTest
             Assert.IsNull(result);
         }
         [TestMethod]
-        public void Test_LayBenh_ByMaBenh_Existing()
+        public void Test_LayBenh_ByMaBenh_Existing_ReturnBenh()
         {
             // Arrange
             var maBenh = "B1";
@@ -154,7 +175,7 @@ namespace UnitTest
             Assert.AreEqual(expectedBenh.id, result.id);
         }
         [TestMethod]
-        public void Test_LayBenh_ByMaBenh_NotExisting()
+        public void Test_LayBenh_ByMaBenh_NotExisting_ReturnNull()
         {
             // Arrange
             var maBenh = "B3";

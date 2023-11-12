@@ -48,6 +48,20 @@ namespace UnitTest
                     AnhDaiDien = "avatar1.jpg",
                     DiaChi = "Địa chỉ 1"
                 },
+                new NGUOIDUNG
+                {
+                    id = 2,
+                    MaNguoiDung = "ND002",
+                    TenNguoiDung = "Người Dùng 2",
+                    NgaySinh = new DateTime(2023, 1, 1),
+                    ChucVu = "Nhân viên",
+                    TenDangNhap = "user",
+                    MatKhau = "password",
+                    idNhomNguoiDung = 1,
+                    SoDT = "0123456789",
+                    AnhDaiDien = "avatar1.jpg",
+                    DiaChi = "Địa chỉ 1"
+                },
             }.AsQueryable();
 
             dbSetMock.As<IQueryable<NGUOIDUNG>>().Setup(m => m.Provider).Returns(nguoiDung.Provider);
@@ -82,6 +96,20 @@ namespace UnitTest
                     ChucVu = "Nhân viên",
                     TenDangNhap = "testuser",
                     MatKhau = "testpassword",
+                    idNhomNguoiDung = 1,
+                    SoDT = "0123456789",
+                    AnhDaiDien = "avatar1.jpg",
+                    DiaChi = "Địa chỉ 1"
+                },
+                new NGUOIDUNG
+                {
+                    id = 2,
+                    MaNguoiDung = "ND002",
+                    TenNguoiDung = "Người Dùng 2",
+                    NgaySinh = new DateTime(2023, 1, 1),
+                    ChucVu = "Nhân viên",
+                    TenDangNhap = "user",
+                    MatKhau = "password",
                     idNhomNguoiDung = 1,
                     SoDT = "0123456789",
                     AnhDaiDien = "avatar1.jpg",
@@ -125,6 +153,20 @@ namespace UnitTest
                     AnhDaiDien = "avatar1.jpg",
                     DiaChi = "Địa chỉ 1"
                 },
+                new NGUOIDUNG
+                {
+                    id = 2,
+                    MaNguoiDung = "ND002",
+                    TenNguoiDung = "Người Dùng 2",
+                    NgaySinh = new DateTime(2023, 1, 1),
+                    ChucVu = "Nhân viên",
+                    TenDangNhap = "user",
+                    MatKhau = "password",
+                    idNhomNguoiDung = 1,
+                    SoDT = "0123456789",
+                    AnhDaiDien = "avatar1.jpg",
+                    DiaChi = "Địa chỉ 1"
+                },
             }.AsQueryable();
 
             dbSetMock.As<IQueryable<NGUOIDUNG>>().Setup(m => m.Provider).Returns(nguoiDung.Provider);
@@ -158,6 +200,20 @@ namespace UnitTest
                     ChucVu = "Nhân viên",
                     TenDangNhap = "testuser",
                     MatKhau = "testpassword",
+                    idNhomNguoiDung = 1,
+                    SoDT = "0123456789",
+                    AnhDaiDien = "avatar1.jpg",
+                    DiaChi = "Địa chỉ 1"
+                },
+                new NGUOIDUNG
+                {
+                    id = 2,
+                    MaNguoiDung = "ND002",
+                    TenNguoiDung = "Người Dùng 2",
+                    NgaySinh = new DateTime(2023, 1, 1),
+                    ChucVu = "Nhân viên",
+                    TenDangNhap = "user",
+                    MatKhau = "password",
                     idNhomNguoiDung = 1,
                     SoDT = "0123456789",
                     AnhDaiDien = "avatar1.jpg",
