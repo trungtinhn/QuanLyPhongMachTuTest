@@ -186,7 +186,7 @@ namespace UnitTest
 
         }
         [TestMethod]
-        public void getTongtien_ReturnsTongTienFromPHIEUNHAPTHUOC()
+        public void GetTongtien_ReturnsTongTienFromPHIEUNHAPTHUOC()
         {
             var phieuNhap1 = new PHIEUNHAPTHUOC() { SoPhieuNhapThuoc = 1, TongTien = 1000000, NgayNhap = new DateTime(2023, 11, 12), TrangThai = 1 };
             var phieuNhap2 = new PHIEUNHAPTHUOC() { SoPhieuNhapThuoc = 7, TongTien = 2000000, NgayNhap = new DateTime(2023, 11, 12), TrangThai = 0 };
