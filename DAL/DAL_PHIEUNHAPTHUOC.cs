@@ -7,12 +7,29 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DAL_PHIEUNHAPTHUOC
+    public interface IDAL_PHIEUNHAPTHUOC
+    {
+        List<PHIEUNHAPTHUOC> GetData();
+        PHIEUNHAPTHUOC GetDataByMa(int maPhieu);
+        int GetMaMax();
+        bool ThemPhieu(PHIEUNHAPTHUOC phieu);
+        bool LuuPhieuNhapThuoc(PHIEUNHAPTHUOC pnt);
+        bool XoaPhieuNhap(int soPhieu);
+        int TongTien(int i);
+        int getTongtien(PHIEUNHAPTHUOC p);
+
+    }
+    public class DAL_PHIEUNHAPTHUOC: IDAL_PHIEUNHAPTHUOC
     {
         QLPMTEntities db;
+
         public DAL_PHIEUNHAPTHUOC()
         {
             db = new QLPMTEntities();
+        }
+        public DAL_PHIEUNHAPTHUOC(QLPMTEntities qLPMTEntities)
+        {
+            db = qLPMTEntities;
         }
         public List<PHIEUNHAPTHUOC> GetData()
         {
@@ -39,11 +56,17 @@ namespace DAL
             return result > 0;
         }
 
-        public void LuuPhieuNhapThuoc(PHIEUNHAPTHUOC pnt)
+        public bool LuuPhieuNhapThuoc(PHIEUNHAPTHUOC pnt)
         {
             PHIEUNHAPTHUOC phieuNT = db.PHIEUNHAPTHUOCs.Find(pnt.SoPhieuNhapThuoc);
-            phieuNT.TrangThai = 1;
-            db.SaveChanges();
+            if (phieuNT != null)
+            {
+                phieuNT.TrangThai = 1;
+                db.SaveChanges();
+                return true;
+            }
+            return false;
+            
         }
 
 
@@ -56,7 +79,6 @@ namespace DAL
                 db.PHIEUNHAPTHUOCs.Remove(phieu);
                 result = db.SaveChanges();
             }
-
             return result > 0;
         }
         public int TongTien(int i)
