@@ -55,6 +55,7 @@ namespace DAL
         public void XoaBenh(BENH benh)
         {
             BENH b = db.BENHs.SingleOrDefault(p => p.MaBenh == benh.MaBenh);
+            if (b == null) return;
             db.BENHs.Remove(b);
             db.SaveChanges();
         }

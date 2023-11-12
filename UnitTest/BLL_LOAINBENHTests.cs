@@ -3,6 +3,8 @@ using DAL;
 using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +26,7 @@ namespace UnitTest
         public void LayDanhSachLoaiBenh_KieuLocAll_ReturnsAllLoaiBenh()
         {
             // Arrange
+            bLL_LOAIBENH = new BLL_LOAIBENH(mockDal.Object);
             var kieuLoc = "Tất cả";
             var giaTri = "";
             var loaiBenh1 = new LOAIBENH { id = 1, MaLoaiBenh = "LB001", TenLoaiBenh = "Loại bệnh 1" };
@@ -101,6 +104,18 @@ namespace UnitTest
             mockDal.Verify(d => d.ThemLoaiBenh(expectedBenh), Times.Once);
         }
         [TestMethod]
+        public void ThemLoaiBenh_ThrowsException_ReturnFalse()
+        {
+            // Arrange
+            var expectedBenh = new LOAIBENH { id = 1, MaLoaiBenh = "LB001", TenLoaiBenh = "Loại bệnh 1" };
+            mockDal.Setup( d=> d.ThemLoaiBenh(expectedBenh)).Throws(new Exception());
+            // Act
+            var result = bLL_LOAIBENH.ThemLoaiBenh(expectedBenh);
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+        [TestMethod]
         public void CapNhatLoaiBenh_ValidLoaiBenh_ReturnTrue()
         {
             // Arrange
@@ -131,6 +146,20 @@ namespace UnitTest
             mockDal.Verify(m => m.CapNhatLoaiBenh(expectedBenh), Times.Never);
         }
         [TestMethod]
+        public void CapNhatLoaiBenh_ThrowsException_ReturnFalse()
+        {
+            // Arrange
+            var expectedBenh = new LOAIBENH { id = 1, MaLoaiBenh = "LB001", TenLoaiBenh = "Loại bệnh 1" };
+
+            mockDal.Setup(d => d.KiemTraLoaiBenh(expectedBenh)).Returns(false);
+            mockDal.Setup(d => d.CapNhatLoaiBenh(expectedBenh)).Throws(new DbUpdateException());
+            // Act
+            var result = bLL_LOAIBENH.CapNhatLoaiBenh(expectedBenh);
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+        [TestMethod]
         public void XoaLoaiBenh_ExixtingLoaiBenh_ReturnTrue()
         {
             // Arrange
@@ -152,13 +181,28 @@ namespace UnitTest
             var expectedBenh = new LOAIBENH { id = 1, MaLoaiBenh = "LB001", TenLoaiBenh = "Loại bệnh 1" };
 
             mockDal.Setup(d => d.KiemTraLoaiBenh(expectedBenh)).Returns(false);
-
+            
             // Act
             var result = bLL_LOAIBENH.XoaLoaiBenh(expectedBenh);
 
             // Assert
             Assert.IsFalse(result);
             mockDal.Verify(m => m.XoaLoaiBenh(expectedBenh), Times.Never);
+        }
+        [TestMethod]
+        public void XoaLoaiBenh_ThrowsException_ReturnFalse()
+        {
+            // Arrange
+            var expectedBenh = new LOAIBENH { id = 1, MaLoaiBenh = "LB001", TenLoaiBenh = "Loại bệnh 1" };
+
+            mockDal.Setup(d => d.KiemTraLoaiBenh(expectedBenh)).Returns(false);
+            mockDal.Setup(d => d.XoaLoaiBenh(expectedBenh)).Throws(new DbUpdateException());
+
+            // Act
+            var result = bLL_LOAIBENH.XoaLoaiBenh(expectedBenh);
+
+            // Assert
+            Assert.IsFalse(result);
         }
         [TestMethod]
         public void LayThongTinLoaiBenh_ExistingTenLoaiBenh_ReturnsLoaiBenh()

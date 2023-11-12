@@ -25,15 +25,14 @@ namespace BLL
             dCachDungDAL = new DAL_CACHDUNG();
         }
 
-        public void LayDanhSach(DataGridView dgv)
-        {
+        //public void LayDanhSach(DataGridView dgv)
+        //{
 
-            dgv.DataSource = dCachDungDAL.LayDanhSach();
-            dgv.Columns[0].HeaderText = "Tên ID";
-            dgv.Columns[1].HeaderText = "Mã Cách Dùng";
-            dgv.Columns[2].HeaderText = "Tên Cách Dùng";
-        }
-
+        //    dgv.DataSource = dCachDungDAL.LayDanhSach();
+        //    dgv.Columns[0].HeaderText = "Tên ID";
+        //    dgv.Columns[1].HeaderText = "Mã Cách Dùng";
+        //    dgv.Columns[2].HeaderText = "Tên Cách Dùng";
+        //}
 
         //ADD
         public bool AddCachDung(CACHDUNG cd)

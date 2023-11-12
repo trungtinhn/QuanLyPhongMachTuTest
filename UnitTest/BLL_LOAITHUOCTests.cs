@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using DAL;
 using DTO;
 using BLL;
+using System.Data.Entity.Infrastructure;
+
 namespace UnitTest
 {
     [TestClass]
@@ -79,7 +81,20 @@ namespace UnitTest
             var b = loaiThuocBLL.Add(loaiThuoc);
 
             // Assert
+            Assert.AreEqual(b, true);
             mockLoaiThuocDAL.Verify(d => d.Add(loaiThuoc), Times.Once);
+        }
+        [TestMethod]
+        public void ThemLoaiThuoc_ThrowsException_ReturnFalse()
+        {
+            // Arrange
+            var loaiThuoc = new LOAITHUOC { id = 1, MaLoaiThuoc = "LT1", TenLoaiThuoc = "Loại thuốc 1" };
+            mockLoaiThuocDAL.Setup(d => d.Add(loaiThuoc)).Throws<Exception>();
+            // Act
+            var b = loaiThuocBLL.Add(loaiThuoc);
+
+            // Assert
+            Assert.AreEqual(b, false);
         }
         [TestMethod]
         public void Check_ExistingTenLoaiThuoc_ReturnsTrue()
@@ -112,6 +127,8 @@ namespace UnitTest
             mockLoaiThuocDAL.Setup(d => d.KiemTra(loaiThuoc)).Returns(true);
 
             var result = loaiThuocBLL.CapNhat(loaiThuoc);
+
+            mockLoaiThuocDAL.Verify( d=> d.CapNhat(loaiThuoc), Times.Once );
             Assert.IsTrue(result);
         }
         [TestMethod]
@@ -121,6 +138,16 @@ namespace UnitTest
 
             mockLoaiThuocDAL.Setup(d => d.KiemTra(loaiThuoc)).Returns(false);
 
+            var result = loaiThuocBLL.CapNhat(loaiThuoc);
+            Assert.IsFalse(result);
+        }
+        [TestMethod]
+        public void CapNhatLoaiThuoc_ThrowsException_ReturnFalse()
+        {
+            var loaiThuoc = new LOAITHUOC { id = 1, MaLoaiThuoc = "LT1", TenLoaiThuoc = "Loại thuốc 1" };
+
+            mockLoaiThuocDAL.Setup(d => d.KiemTra(loaiThuoc)).Returns(false);
+            mockLoaiThuocDAL.Setup(d => d.CapNhat(loaiThuoc)).Throws(new DbUpdateException());
             var result = loaiThuocBLL.CapNhat(loaiThuoc);
             Assert.IsFalse(result);
         }
@@ -141,6 +168,17 @@ namespace UnitTest
             var loaiThuoc = new LOAITHUOC { id = 1, MaLoaiThuoc = "LT1", TenLoaiThuoc = "Loại thuốc 1" };
 
             mockLoaiThuocDAL.Setup(d => d.KiemTra(loaiThuoc)).Returns(false);
+
+            var result = loaiThuocBLL.Xoa(loaiThuoc);
+            Assert.IsFalse(result);
+        }
+        [TestMethod]
+        public void XoaLoaiThuoc_ThrowsException_ReturnFalse()
+        {
+            var loaiThuoc = new LOAITHUOC { id = 1, MaLoaiThuoc = "LT1", TenLoaiThuoc = "Loại thuốc 1" };
+
+            mockLoaiThuocDAL.Setup(d => d.KiemTra(loaiThuoc)).Returns(false);
+            mockLoaiThuocDAL.Setup(d => d.Xoa(loaiThuoc)).Throws(new DbUpdateException());
 
             var result = loaiThuocBLL.Xoa(loaiThuoc);
             Assert.IsFalse(result);

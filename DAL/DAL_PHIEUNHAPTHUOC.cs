@@ -92,7 +92,6 @@ namespace DAL
             {
                 phieu.TongTien += s.ThanhTien;
             }
-            db.SaveChanges();
             return phieu.TongTien;
 
         }
