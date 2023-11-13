@@ -11,7 +11,7 @@ namespace DAL
     {
         dynamic Getall(int i);
         List<CT_PHIEUNHAP> GetCTByMa(int ma);
-        object GetDataCTPhieuByMaPhieu(int maPhieu);
+        List<CT_PHIEUNHAP> GetDataCTPhieuByMaPhieu(int maPhieu);
         bool SuaChiTietPhieu(CT_PHIEUNHAP model);
         bool ThemChiTietPhieu(CT_PHIEUNHAP model);
         bool XoaAllChiTietPhieu(int soPhieu);
@@ -50,22 +50,23 @@ namespace DAL
 
             return result > 0;
         }
-        public object GetDataCTPhieuByMaPhieu(int maPhieu)
+        public List<CT_PHIEUNHAP> GetDataCTPhieuByMaPhieu(int maPhieu)
         {
-            var query = db.CT_PHIEUNHAP
+            var dsphieunhap = db.CT_PHIEUNHAP
                 .Where(m => m.SoPhieuNhapThuoc == maPhieu)
-                .Select(m => new
+                .Select(m => new CT_PHIEUNHAP
                 {
-                    m.idMaThuoc,
-                    m.THUOC.TenThuoc,
-                    m.SoLuongNhap,
-                    m.DonGiaNhap,
-                    m.ThanhTien
+                    idMaThuoc = m.idMaThuoc,
+                    THUOC = new THUOC { TenThuoc = m.THUOC.TenThuoc },
+                    SoLuongNhap = m.SoLuongNhap,
+                    DonGiaNhap = m.DonGiaNhap,
+                    ThanhTien = m.ThanhTien
                 })
                 .ToList();
 
-            return query;
+            return dsphieunhap;
         }
+
         public bool XoaChiTietPhieu(CT_PHIEUNHAP model)
         {
             CT_PHIEUNHAP ct = db.CT_PHIEUNHAP.Where(m => m.SoPhieuNhapThuoc == model.SoPhieuNhapThuoc && m.idMaThuoc == model.idMaThuoc).FirstOrDefault();
@@ -89,7 +90,6 @@ namespace DAL
                 ct.DonGiaNhap = model.DonGiaNhap;
                 ct.ThanhTien = model.SoLuongNhap * model.DonGiaNhap;
                 result = db.SaveChanges();
-                PHIEUNHAPTHUOC pn = new PHIEUNHAPTHUOC();
 
             }
 

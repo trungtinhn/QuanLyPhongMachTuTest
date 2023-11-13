@@ -65,7 +65,7 @@ namespace UnitTest
         {
             // Arrange
             var maPhieu = 1;
-            var expectedResult = new object();
+            var expectedResult = new List<CT_PHIEUNHAP>();
             mockCTPhieuNhapDAL
                 .Setup(x => x.GetDataCTPhieuByMaPhieu(maPhieu))
                 .Returns(expectedResult);
