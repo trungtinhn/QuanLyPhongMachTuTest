@@ -72,16 +72,13 @@ namespace DAL
             try
             {
                 BENHNHAN bn = db.BENHNHANs.SingleOrDefault(b => b.MaBenhNhan == benhNhan.MaBenhNhan);
-               
+                if (bn == null) return false;
                 return true;
             }
             catch (Exception ex)
             {
-              
-                Console.WriteLine(ex.Message);
+                return false;
             }
-           
-            return false;
         }
 
         public void CapNhatBenhNhan(BENHNHAN benhNhan)
@@ -98,6 +95,7 @@ namespace DAL
         public void XoaBenhNhan(BENHNHAN benhNhan)
         {
             BENHNHAN bn = db.BENHNHANs.SingleOrDefault(b => b.MaBenhNhan == benhNhan.MaBenhNhan);
+            if (bn == null) return;
             db.BENHNHANs.Remove(bn);
             db.SaveChanges();
         }

@@ -27,8 +27,8 @@ namespace UnitTest
 
             var benhNhanList = new List<BENHNHAN>
             {
-                new BENHNHAN { id = 1, MaBenhNhan = "BN1", HoTenBenhNhan = "Benh Nhan 1", GioiTinh = "Nam", NgaySinh = new DateTime(1990, 1, 1), DiaChi = "Dia chi 1" },
-                new BENHNHAN { id = 2, MaBenhNhan = "BN2", HoTenBenhNhan = "Benh Nhan 2", GioiTinh = "Nu", NgaySinh = new DateTime(1995, 5, 5), DiaChi = "Dia chi 2" }
+                new BENHNHAN() { id = 1, MaBenhNhan = "BN1", HoTenBenhNhan = "Benh Nhan 1", GioiTinh = "Nam", NgaySinh = new DateTime(1990, 1, 1), DiaChi = "Dia chi 1" },
+                new BENHNHAN() { id = 2, MaBenhNhan = "BN2", HoTenBenhNhan = "Benh Nhan 2", GioiTinh = "Nu", NgaySinh = new DateTime(1995, 5, 5), DiaChi = "Dia chi 2" }
             };
 
             benhNhanDbSetMock.As<IQueryable<BENHNHAN>>().Setup(m => m.Provider).Returns(benhNhanList.AsQueryable().Provider);
@@ -60,7 +60,7 @@ namespace UnitTest
         public void LayThongTinBenhNhan_ShouldReturnNull_WhenMaBenhNhanNotExists()
         {
             // Arrange
-
+            
             // Act
             var result = dalBenhNhan.LayThongTinBenhNhan("NonExistentID");
 
@@ -159,6 +159,7 @@ namespace UnitTest
             Assert.AreEqual(new DateTime(1990, 1, 1), result[0].NgaySinh);
             Assert.AreEqual("Dia chi 1", result[0].DiaChi);
         }
+        
 
         [TestMethod]
         public void LayDanhSachBenhNhan_ShouldReturnPatientsFilteredByDiaChi_WhenFilterTypeIsDiaChi()
@@ -181,7 +182,7 @@ namespace UnitTest
         public void ThemBenhNhan_ShouldAddPatient_WhenPatientIsNotNull()
         {
             // Arrange
-            var benhNhan = new BENHNHAN
+            var benhNhan = new BENHNHAN()
             {
                 MaBenhNhan = "BN1",
                 HoTenBenhNhan = "Benh Nhan 1",
@@ -197,7 +198,9 @@ namespace UnitTest
             dalBenhNhan.ThemBenhNhan(benhNhan);
 
             // Assert
-            dbContextMock.Verify();
+            dbContextMock.Verify( d => d.BENHNHANs.Add(benhNhan), Times.Once());
+            dbContextMock.Verify( d => d.SaveChanges(), Times.Once());
+            //dbContextMock.Verify();
         }
 
         [TestMethod]
@@ -221,7 +224,7 @@ namespace UnitTest
         {
             // Arrange
             string maBenhNhan = "BN1";
-            BENHNHAN benhNhan = new BENHNHAN { MaBenhNhan = maBenhNhan };
+            BENHNHAN benhNhan = new BENHNHAN() { MaBenhNhan = maBenhNhan };
 
             // Act
             bool result = dalBenhNhan.KiemTraBenhNhan(benhNhan);
@@ -230,10 +233,36 @@ namespace UnitTest
             Assert.IsTrue(result);
         }
         [TestMethod]
+        public void KiemTraBenhNhan_ShouldReturnFalse_WhenPatientNOtExists()
+        {
+            // Arrange
+            string maBenhNhan = "BN1";
+            BENHNHAN benhNhan = new BENHNHAN() {};
+            
+            // Act
+            bool result = dalBenhNhan.KiemTraBenhNhan(benhNhan);
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+        [TestMethod]
+        public void KiemTraBenhNhan_ShouldReturnFalse_WhenThrowsException()
+        {
+            // Arrange
+            string maBenhNhan = "BN1";
+            BENHNHAN benhNhan = new BENHNHAN() { };
+            dbContextMock.Setup(d => d.BENHNHANs).Throws(new Exception());
+            // Act
+            bool result = dalBenhNhan.KiemTraBenhNhan(benhNhan);
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+        [TestMethod]
         public void CapNhatBenhNhan_ShouldUpdatePatient_WhenPatientExists()
         {
             // Arrange
-            BENHNHAN benhNhanToUpdate = new BENHNHAN
+            BENHNHAN benhNhanToUpdate = new BENHNHAN()
             {
                 MaBenhNhan = "BN1",
                 HoTenBenhNhan = "Updated Benh Nhan",
@@ -252,19 +281,20 @@ namespace UnitTest
             Assert.AreEqual(benhNhanToUpdate.NgaySinh, updatedBenhNhan.NgaySinh);
             Assert.AreEqual(benhNhanToUpdate.DiaChi, updatedBenhNhan.DiaChi);
             Assert.AreEqual(benhNhanToUpdate.GioiTinh, updatedBenhNhan.GioiTinh);
+            dbContextMock.Verify( d=> d.SaveChanges(), Times.Once );
         }
         [TestMethod]
         public void XoaBenhNhan_ShouldRemovePatient_WhenPatientExists()
         {
             // Arrange
             BENHNHAN benhNhanToRemove = new BENHNHAN { id = 1, MaBenhNhan = "BN1", HoTenBenhNhan = "Benh Nhan 1", GioiTinh = "Nam", NgaySinh = new DateTime(1990, 1, 1), DiaChi = "Dia chi 1" };
-            dbContextMock.Setup(m => m.BENHNHANs.Find(benhNhanToRemove.id)).Returns(benhNhanToRemove);
-            dbContextMock.Setup(m => m.BENHNHANs.Find(benhNhanToRemove));
+            dbContextMock.Setup(d => d.BENHNHANs.Find(1)).Returns(benhNhanToRemove);
 
             // Act
             dalBenhNhan.XoaBenhNhan(benhNhanToRemove);
 
             // Assert
+            
             dbContextMock.Verify(m => m.SaveChanges(), Times.Once);
         }
         [TestMethod]

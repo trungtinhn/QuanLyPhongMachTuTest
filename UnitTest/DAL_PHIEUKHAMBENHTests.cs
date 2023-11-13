@@ -265,8 +265,8 @@ namespace UnitTest
             string giaTri = "BN1";
             DateTime startDate = new DateTime(2022, 1, 1);
             DateTime endDate = new DateTime(2022, 12, 31);
-            PHIEUKHAMBENH phieu1 = new PHIEUKHAMBENH() { SoPhieuKhamBenh = 1, NgayKham = new DateTime(2022, 11, 12), idMaBenhNhan = 1, MaBenh = 1, TrieuChung = "Đau đầu, mệt mỏi", TongTien = 100000, TrangThai = 1 };
-            PHIEUKHAMBENH phieu2 = new PHIEUKHAMBENH() { SoPhieuKhamBenh = 1, NgayKham = new DateTime(2021, 10, 10), idMaBenhNhan = 2, MaBenh = 2, TrieuChung = "Đau đầu, mệt mỏi", TongTien = 100000, TrangThai = 1 };
+            PHIEUKHAMBENH phieu1 = new PHIEUKHAMBENH { SoPhieuKhamBenh = 1, NgayKham = new DateTime(2022, 11, 12), idMaBenhNhan = 1, MaBenh = 1, TrieuChung = "Đau đầu, mệt mỏi", TongTien = 100000, TrangThai = 1 };
+            PHIEUKHAMBENH phieu2 = new PHIEUKHAMBENH { SoPhieuKhamBenh = 1, NgayKham = new DateTime(2021, 10, 10), idMaBenhNhan = 2, MaBenh = 2, TrieuChung = "Đau đầu, mệt mỏi", TongTien = 100000, TrangThai = 1 };
             var listdata = new List<PHIEUKHAMBENH> { phieu1, phieu2 };
 
             var expanted = new List<dynamic> { phieu1 };

@@ -59,16 +59,8 @@ namespace DAL
         //ADD
         public void AddCachDung(CACHDUNG cd)
         {
-            try
-            {
                 db.CACHDUNGs.Add(cd);
                 db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                throw; // Rethrow the exception to signal that the addition failed
-            }
         }
 
 

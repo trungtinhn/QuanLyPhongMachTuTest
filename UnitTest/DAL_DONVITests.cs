@@ -26,10 +26,10 @@ namespace UnitTest
             dalDonVi = new DAL_DONVI(dbContextMock.Object);
 
             var donViList = new List<DONVI>
-        {
-            new DONVI { id = 1, MaDonvi = "DV1", TenDonVi = "Don Vi 1" },
-            new DONVI { id = 2, MaDonvi = "DV2", TenDonVi = "Don Vi 2" }
-        };
+            {
+                new DONVI { id = 1, MaDonvi = "DV1", TenDonVi = "Don Vi 1" },
+                new DONVI { id = 2, MaDonvi = "DV2", TenDonVi = "Don Vi 2" }
+            };
 
             donViDbSetMock.As<IQueryable<DONVI>>().Setup(m => m.Provider).Returns(donViList.AsQueryable().Provider);
             donViDbSetMock.As<IQueryable<DONVI>>().Setup(m => m.Expression).Returns(donViList.AsQueryable().Expression);
@@ -106,6 +106,53 @@ namespace UnitTest
             // Assert
             dbContextMock.Verify(m => m.SaveChanges(), Times.Once);
         }
+        [TestMethod]
+        public void GetAll_ReturnsAllUnits()
+        {
+            // Arrange
 
+            // Act
+            List<DONVI> result = dalDonVi.getall();
+
+            // Assert
+            Assert.AreEqual(2, result.Count);
+        }
+        [TestMethod]
+        public void GetByten_ValidName_ReturnsMatchingUnit()
+        {
+
+            // Act
+            DONVI result = dalDonVi.GetByten("Don Vi 2");
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual("Don Vi 2", result.TenDonVi);
+            Assert.AreEqual(2, result.id);
+        }
+        [TestMethod]
+        public void GetByten_NotValidName_ReturnsNull()
+        {
+
+            // Act
+            DONVI result = dalDonVi.GetByten("Don Vi 3");
+
+            // Assert
+            Assert.IsNull(result);
+
+        }
+        [TestMethod]
+        public void GetDVbyID_ValidID_ReturnsMatchingUnit()
+        {
+            var donvi = new DONVI { id = 2, MaDonvi = "DV2", TenDonVi = "Don Vi 2" };
+            // Arrange
+            dbContextMock.Setup(d => d.DONVIs.Find(2)).Returns(donvi);
+            // Act
+            DONVI result = dalDonVi.getDVbyID(2);
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(donvi.id, result.id);
+            
+        }
     }
 }

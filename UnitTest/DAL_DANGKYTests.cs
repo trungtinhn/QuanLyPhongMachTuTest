@@ -62,11 +62,12 @@ namespace UnitTest
         {
             // Arrange
             DANGKY dangKyToRemove = new DANGKY { id = 1, MaDangKy = "DK1", NgayDangKy = new DateTime(2023, 12, 21), idMaBenhNhan = 1 };
-
+            
             // Act
             dalDangKy.XoaDangKy(dangKyToRemove);
 
             // Assert
+           
             dbContextMock.Verify(m => m.SaveChanges(), Times.Once);
         }
         [TestMethod]

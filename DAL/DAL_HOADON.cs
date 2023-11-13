@@ -18,8 +18,8 @@ namespace DAL
     public class DAL_HOADON : IDAL_HOADON
     {
         QLPMTEntities db;
-        DAL_THAMSO thamSoDAL;
-        DAL_PHIEUKHAMBENH dPKB;
+        IDAL_THAMSO thamSoDAL;
+        IDAL_PHIEUKHAMBENH dPKB;
 
         public DAL_HOADON()
         {
@@ -27,11 +27,11 @@ namespace DAL
             thamSoDAL = new DAL_THAMSO();
             dPKB = new DAL_PHIEUKHAMBENH();
         }
-        public DAL_HOADON(QLPMTEntities dbContext)
+        public DAL_HOADON(QLPMTEntities dbContext, IDAL_THAMSO thamSoDAL, IDAL_PHIEUKHAMBENH dPKB )
         {
             this.db = dbContext;
-            thamSoDAL = new DAL_THAMSO();
-            dPKB = new DAL_PHIEUKHAMBENH();
+            this.thamSoDAL = thamSoDAL;
+            this.dPKB = dPKB;
         }
 
         public void TaoHoaDon(HOADON hoaDon)
