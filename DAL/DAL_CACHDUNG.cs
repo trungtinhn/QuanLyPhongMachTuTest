@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 using DTO;
@@ -16,7 +17,7 @@ namespace DAL
         CACHDUNG GetByTen(string ten);
         CACHDUNG getCDbyID(int idMaCachDung);
         bool KiemTraCachDung(CACHDUNG cACHDUNG);
-        object LayDanhSach();
+        List<CACHDUNG> LayDanhSach();
         void XoaCachDung(CACHDUNG cACHDUNG);
     }
     public class DAL_CACHDUNG : IDAL_CACHDUNG
@@ -34,14 +35,9 @@ namespace DAL
         }
 
         //GET DANHSACH
-        public dynamic LayDanhSach()
+        public List<CACHDUNG> LayDanhSach()
         {
-            var danhsach = db.CACHDUNGs.Select(s => new
-            {
-                s.id,
-                s.MaCachDung,
-                s.TenCachDung,
-            }).ToList();
+            var danhsach = db.CACHDUNGs.ToList();
             return danhsach;
         }
 
@@ -131,9 +127,9 @@ namespace DAL
 
 
 
-        public CACHDUNG getCDbyID(int idMaCachDung)
+        public CACHDUNG getCDbyID(int idcd)
         {
-            return db.CACHDUNGs.Find(idMaCachDung);
+            return db.CACHDUNGs.FirstOrDefault(s => s.id == idcd);
         }
     }
 }

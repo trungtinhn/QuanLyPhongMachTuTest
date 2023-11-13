@@ -267,5 +267,63 @@ namespace UnitTest
             // Assert
             dbContextMock.Verify(m => m.SaveChanges(), Times.Once);
         }
+        [TestMethod]
+        public void LocBenhNhan_ShouldReturnPatients_WhenFilterIsMaBenhNhan()
+        {
+            // Arrange
+            var kieuLoc = "Mã bệnh nhân";
+            var giaTri = "BN1";
+            var benhNhanList = new List<BENHNHAN>
+            {
+                new BENHNHAN { id = 1, MaBenhNhan = "BN1", HoTenBenhNhan = "Benh Nhan 1", GioiTinh = "Nam", NgaySinh = new DateTime(1990, 1, 1), DiaChi = "Dia chi 1" }
+            };
+
+            // Cấu hình mock cho dữ liệu BENHNHANs
+            dbContextMock.Setup(m => m.BENHNHANs).Returns(benhNhanDbSetMock.Object);
+
+            // Act
+            var result = dalBenhNhan.LocBenhNhan(kieuLoc, giaTri);
+
+            // Assert
+            Assert.AreEqual(benhNhanList.Count, result.Count);
+            for (int i = 0; i < benhNhanList.Count; i++)
+            {
+                Assert.AreEqual(benhNhanList[i].id, result[i].id);
+                Assert.AreEqual(benhNhanList[i].MaBenhNhan, result[i].MaBenhNhan);
+                Assert.AreEqual(benhNhanList[i].HoTenBenhNhan, result[i].HoTenBenhNhan);
+                Assert.AreEqual(benhNhanList[i].GioiTinh, result[i].GioiTinh);
+                Assert.AreEqual(benhNhanList[i].NgaySinh, result[i].NgaySinh);
+                Assert.AreEqual(benhNhanList[i].DiaChi, result[i].DiaChi);
+            }
+        }
+        [TestMethod]
+        public void LocBenhNhan_ShouldReturnPatients_WhenFilterIsTenBenhNhan()
+        {
+            // Arrange
+            var kieuLoc = "Tên bệnh nhân";
+            var giaTri = "Benh Nhan 1";
+            var benhNhanList = new List<BENHNHAN>
+            {
+                new BENHNHAN { id = 1, MaBenhNhan = "BN1", HoTenBenhNhan = "Benh Nhan 1", GioiTinh = "Nam", NgaySinh = new DateTime(1990, 1, 1), DiaChi = "Dia chi 1" }
+            };
+
+            // Cấu hình mock cho dữ liệu BENHNHANs
+            dbContextMock.Setup(m => m.BENHNHANs).Returns(benhNhanDbSetMock.Object);
+
+            // Act
+            var result = dalBenhNhan.LocBenhNhan(kieuLoc, giaTri);
+
+            // Assert
+            Assert.AreEqual(benhNhanList.Count, result.Count);
+            for (int i = 0; i < benhNhanList.Count; i++)
+            {
+                Assert.AreEqual(benhNhanList[i].id, result[i].id);
+                Assert.AreEqual(benhNhanList[i].MaBenhNhan, result[i].MaBenhNhan);
+                Assert.AreEqual(benhNhanList[i].HoTenBenhNhan, result[i].HoTenBenhNhan);
+                Assert.AreEqual(benhNhanList[i].GioiTinh, result[i].GioiTinh);
+                Assert.AreEqual(benhNhanList[i].NgaySinh, result[i].NgaySinh);
+                Assert.AreEqual(benhNhanList[i].DiaChi, result[i].DiaChi);
+            }
+        }
     }
 }

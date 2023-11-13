@@ -38,6 +38,19 @@ namespace UnitTest
             cachDungDbSetMock.As<IQueryable<CACHDUNG>>().Setup(m => m.GetEnumerator()).Returns(cachDungList.AsQueryable().GetEnumerator());
             dbContextMock.Setup(m => m.CACHDUNGs).Returns(cachDungDbSetMock.Object);
         }
+        [TestMethod]
+        public void Test_LayDanhSach()
+        {
+            // Arrange
+
+            // Act
+            var result = dalCachDung.LayDanhSach();
+
+            // Assert
+            Assert.IsNotNull(result); // Kiểm tra xem kết quả có tồn tại không
+            Assert.IsTrue(result is IEnumerable<CACHDUNG>); // Kiểm tra xem result có phải là một danh sách hay không
+            Assert.AreEqual(2, (result as IEnumerable<CACHDUNG>).Count());
+        }
 
         [TestMethod]
         public void KiemTraCachDung_ShouldReturnTrue_WhenCachDungExists()
@@ -114,6 +127,70 @@ namespace UnitTest
             dbContextMock.Verify(m => m.SaveChanges(), Times.Once);
             Assert.AreEqual("Cach Dung 1 Updated", cachDungToUpdate.TenCachDung);
         }
+        [TestMethod]
+        public void Test_GetAll_ShouldReturnListOfCachDung()
+        {
+            // Arrange
 
+            // Act
+            var result = dalCachDung.getall();
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(2, result.Count);
+            CollectionAssert.AllItemsAreInstancesOfType(result, typeof(CACHDUNG));
+        }
+        [TestMethod]
+        public void Test_GetByTen_ShouldReturnCachDung_WhenExists()
+        {
+            // Arrange
+            string tenToSearch = "Cach Dung 1";
+
+            // Act
+            var result = dalCachDung.GetByTen(tenToSearch);
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(tenToSearch, result.TenCachDung);
+        }
+
+        [TestMethod]
+        public void Test_GetByTen_ShouldReturnNull_WhenNotExists()
+        {
+            // Arrange
+            string tenToSearch = "Nonexistent Cach Dung";
+
+            // Act
+            var result = dalCachDung.GetByTen(tenToSearch);
+
+            // Assert
+            Assert.IsNull(result);
+        }
+        [TestMethod]
+        public void Test_GetCDByID_ShouldReturnCachDung_WhenExists()
+        {
+            // Arrange
+            int idToSearch = 1;
+
+            // Act
+            var result = dalCachDung.getCDbyID(idToSearch);
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(idToSearch, result.id);
+        }
+
+        [TestMethod]
+        public void Test_GetCDByID_ShouldReturnNull_WhenNotExists()
+        {
+            // Arrange
+            int idToSearch = 3; // Assuming ID 3 does not exist
+
+            // Act
+            var result = dalCachDung.getCDbyID(idToSearch);
+
+            // Assert
+            Assert.IsNull(result);
+        }
     }
 }
