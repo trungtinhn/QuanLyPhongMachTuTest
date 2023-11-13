@@ -20,14 +20,15 @@ namespace DAL
     public class DAL_DANGKY : IDAL_DANGKY
     {
         QLPMTEntities db;
-        DAL_THAMSO dThamSo;
+        IDAL_THAMSO dThamSo;
         public DAL_DANGKY()
         {
             db = new QLPMTEntities();
         }
-        public DAL_DANGKY(QLPMTEntities dbContext)
+        public DAL_DANGKY(QLPMTEntities dbContext, IDAL_THAMSO dThamSo)
         {
             db = dbContext;
+            this.dThamSo = dThamSo;
         }
         public dynamic LayDanhSachDangKy()
         {

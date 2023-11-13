@@ -192,5 +192,30 @@ namespace UnitTest
             // Assert
             Assert.IsNull(result);
         }
+        [TestMethod]
+        public void CheckCachDung_ExistingCachDung_ReturnsTrue()
+        {
+            // Arrange
+           
+
+            // Act
+            bool result = dalCachDung.CheckCachDung("Cach Dung 1");
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void CheckCachDung_NonExistingCachDung_ReturnsFalse()
+        {
+            // Arrange
+            
+
+            // Act
+            bool result = dalCachDung.CheckCachDung("Ahihi");
+
+            // Assert
+            Assert.IsFalse(result);
+        }
     }
 }

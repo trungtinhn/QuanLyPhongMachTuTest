@@ -18,14 +18,15 @@ namespace UnitTest
         private Mock<QLPMTEntities> dbContextMock;
         private Mock<DbSet<DANGKY>> dangKyDbSetMock;
         private Mock<DbSet<BENHNHAN>> benhNhanDbSetMock;
-
+        private Mock<IDAL_THAMSO> dalthamso;
         [TestInitialize]
         public void Setup()
         {
             dbContextMock = new Mock<QLPMTEntities>();
             dangKyDbSetMock = new Mock<DbSet<DANGKY>>();
             benhNhanDbSetMock = new Mock<DbSet<BENHNHAN>>();
-            dalDangKy = new DAL_DANGKY(dbContextMock.Object);
+            dalthamso = new Mock<IDAL_THAMSO>();
+            dalDangKy = new DAL_DANGKY(dbContextMock.Object, dalthamso.Object);
 
             // Danh sách đối tượng DANGKY
             var dangKyList = new List<DANGKY>
@@ -145,6 +146,23 @@ namespace UnitTest
             // Assert
             dbContextMock.Verify(m => m.DANGKies.Add(dangKyToAdd), Times.Once());
             dbContextMock.Verify(m => m.SaveChanges(), Times.Once());
+        }
+        [TestMethod]
+        public void LaySoBenhNhanTiepNhan_ReturnsRemainingPatients()
+        {
+            // Arrange
+            int soBenhNhanToiDa = 50;
+            int soNguoiDK = 2;
+            THAMSO thamSo = new THAMSO { id = 1, TienKham = 100, SoBenhNhanToiDa = 50, SoLuongSapHet = 5 };
+            dalthamso.Setup(dal => dal.LayThamSo(1)).Returns(thamSo);
+            //dbContextMock.Setup(db => db.DANGKies.Count()).Returns(soNguoiDK);
+
+            // Act
+            int result = dalDangKy.LaySoBenhNhanTiepNhan();
+
+            // Assert
+            int expected = soBenhNhanToiDa - soNguoiDK;
+            Assert.AreEqual(expected, result);
         }
     }
 }
