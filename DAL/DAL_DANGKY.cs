@@ -24,17 +24,15 @@ namespace DAL
         public DAL_DANGKY()
         {
             db = new QLPMTEntities();
-            dThamSo = new DAL_THAMSO(); 
         }
         public DAL_DANGKY(QLPMTEntities dbContext)
         {
-            this.db = dbContext;
-            dThamSo = new DAL_THAMSO();
+            db = dbContext;
         }
         public dynamic LayDanhSachDangKy()
         {
-            DateTime date = DateTime.Now;
-            var ds = db.DANGKies.Where(p => p.NgayDangKy.Day == date.Day && p.NgayDangKy.Month == date.Month && p.NgayDangKy.Year == date.Year).Select(s => new
+
+            var ds = db.DANGKies.Select(s => new
             {
                 s.idMaBenhNhan
             });
@@ -55,13 +53,13 @@ namespace DAL
         {
             db.DANGKies.Add(dangKy);
             db.SaveChanges();
-
-            var changedEntries = db.ChangeTracker.Entries<DANGKY>().Where(x => x.State != EntityState.Unchanged);
         }
 
         public void XoaDangKy(DANGKY dangKy)
         {
-            db.DANGKies.Remove(dangKy);
+            DANGKY dk = db.DANGKies.SingleOrDefault(p => p.id == dangKy.id);
+            if (dk == null) return;
+            db.DANGKies.Remove(dk);
             db.SaveChanges();
         }
 
@@ -75,7 +73,7 @@ namespace DAL
         {
             DateTime dateTime = DateTime.Now;
             THAMSO thamSo = dThamSo.LayThamSo(1);
-            int SoNguoiDK = db.DANGKies.Where(p => p.NgayDangKy.Day == dateTime.Day && p.NgayDangKy.Month == dateTime.Month && p.NgayDangKy.Year == dateTime.Year).Count();
+            int SoNguoiDK = db.DANGKies.Count();
             return thamSo.SoBenhNhanToiDa - SoNguoiDK;
         }
 
