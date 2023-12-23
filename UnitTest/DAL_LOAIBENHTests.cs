@@ -174,7 +174,7 @@ namespace UnitTest
             dbContextMock.Verify(db => db.SaveChanges(), Times.Once);
         }
         [TestMethod]
-        public void CapNhatLoaiBenh_NotValidLoaiBenh_UpdatesDatabase()
+        public void CapNhatLoaiBenh_NotValidLoaiBenh()
         {
             // Arrange
             var loaiBenh1 = new LOAIBENH { id = 1, MaLoaiBenh = "LB001", TenLoaiBenh = "Loại bệnh 1" };
@@ -212,7 +212,7 @@ namespace UnitTest
             dbContextMock.Verify(db => db.SaveChanges(), Times.Once);
         }
         [TestMethod]
-        public void XoaLoaiBenh_ValidLoaiBenh_NotExistingBenh_UpdatesDatabase()
+        public void XoaLoaiBenh_ValidLoaiBenh_NotExistingBenh()
         {
             // Arrange
             var benh1 = new BENH { id = 3, MaBenh = "LB001", TenBenh = "Benh 3", TrieuChung = "Trieu chung 3", idMaLoaiBenh = 3, idMaThuocDacTri = 3 };

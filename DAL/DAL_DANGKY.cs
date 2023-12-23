@@ -24,6 +24,7 @@ namespace DAL
         public DAL_DANGKY()
         {
             db = new QLPMTEntities();
+            dThamSo = new DAL_THAMSO();
         }
         public DAL_DANGKY(QLPMTEntities dbContext, IDAL_THAMSO dThamSo)
         {

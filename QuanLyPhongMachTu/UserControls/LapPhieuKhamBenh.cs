@@ -222,7 +222,7 @@ namespace QuanLyPhongMachTu.UserControls
         {
             if (string.IsNullOrEmpty(txtPhieuKhamBenh.Text))
             {
-                MessageBox.Show("Bạn chưa chọn Phiếu khám bệnh");
+                MessageBox.Show("Bạn chưa chọn Phiếu khám bệnh!");
                 return;
             }
 
@@ -494,7 +494,7 @@ namespace QuanLyPhongMachTu.UserControls
             }
             else
             {
-                MessageBox.Show("Xóa không thành công!");
+                MessageBox.Show("Xóa phiếu khám bệnh không thành công!");
             }
         }
 
