@@ -1,4 +1,4 @@
-name: Build and test
+name: CI/CD
 
 on:
   push:
@@ -7,15 +7,23 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }} # Chạy trên các hệ điều hành khác nhau
+
     strategy:
       matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        os: [windows-latest, ubuntu-latest, macos-latest] # Cấu hình các hệ điều hành
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Restore dependencies
-        run: dotnet restore
-      - name: Build project
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '4.7.2' # Phiên bản .NET Framework
+
+      - name: Build
         run: dotnet build
-      - name: Run tests
+
+      - name: Test
         run: dotnet test
