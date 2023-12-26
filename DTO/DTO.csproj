@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DTO</RootNamespace>
     <AssemblyName>DTO</AssemblyName>
-    <TargetFrameworkVersion>net6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
