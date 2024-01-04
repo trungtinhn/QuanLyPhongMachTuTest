@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dgvThongTinBN = new System.Windows.Forms.DataGridView();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnDangKy = new System.Windows.Forms.Button();
@@ -45,7 +44,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtDiachiBN = new System.Windows.Forms.TextBox();
             this.txtHotenBN = new System.Windows.Forms.TextBox();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.lbl_Thongtinbenhnhan = new System.Windows.Forms.Label();
             this.dgvDanhSachHoaDon = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
@@ -562,7 +560,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDiachiBN;
         private System.Windows.Forms.TextBox txtHotenBN;
-        private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Label lbl_Thongtinbenhnhan;
         private System.Windows.Forms.DataGridView dgvDanhSachHoaDon;
         private System.Windows.Forms.Label label6;

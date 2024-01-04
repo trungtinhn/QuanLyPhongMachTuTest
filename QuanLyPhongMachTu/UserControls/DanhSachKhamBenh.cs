@@ -50,7 +50,7 @@ namespace QuanLyPhongMachTu.UserControls
             dt.Columns.Add("Ngày sinh");
             dt.Columns.Add("Địa chỉ");
 
-
+            dBenhNhanBLL = new BLL_BENHNHAN();
             List<BENHNHAN> benhNhans = dBenhNhanBLL.LayDanhSachBenhNhan(cboTraCuu.Text, txtTraCuu.Text, dtimeTraCuu.Value);
 
             foreach (BENHNHAN benhNhan in benhNhans)
@@ -95,6 +95,7 @@ namespace QuanLyPhongMachTu.UserControls
             }
             benhNhan.NgaySinh = dtimeNgaySinh.Value;
             benhNhan.DiaChi = txtDiachiBN.Text;
+            dBenhNhanBLL = new BLL_BENHNHAN();
 
             if (dBenhNhanBLL.ThemBenhNhan(benhNhan))
             {
@@ -130,7 +131,7 @@ namespace QuanLyPhongMachTu.UserControls
             benhNhan.NgaySinh = dtimeNgaySinh.Value;
             benhNhan.DiaChi = txtDiachiBN.Text;
             benhNhan.MaBenhNhan = txtMaBN.Text;
-
+            dBenhNhanBLL = new BLL_BENHNHAN();
 
             if (dBenhNhanBLL.CapNhatBenhNhan(benhNhan))
             {
@@ -185,6 +186,9 @@ namespace QuanLyPhongMachTu.UserControls
             benhNhan.DiaChi = txtDiachiBN.Text;
             benhNhan.MaBenhNhan = txtMaBN.Text;
 
+            dBenhNhanBLL = new BLL_BENHNHAN();
+           
+
             if (dBenhNhanBLL.XoaBenhNhan(benhNhan))
             {
                 MessageBox.Show("Xóa bệnh nhân thành công!");
@@ -219,11 +223,15 @@ namespace QuanLyPhongMachTu.UserControls
         {
             if (!KiemTraNhapLieuDK())
             {
-                MessageBox.Show("Vui lòng cung cấp đủ thông tin!");
+                MessageBox.Show("Vui lòng cung cấp đầy đủ thông tin!");
                 return;
             }
 
             DANGKY dangKy = new DANGKY();
+
+            dBenhNhanBLL = new BLL_BENHNHAN();
+            dDangKyBLL = new BLL_DANGKY();
+           
 
             BENHNHAN bn = dBenhNhanBLL.LayThongTinBenhNhan(txtMaBNDK.Text);
 
@@ -238,7 +246,7 @@ namespace QuanLyPhongMachTu.UserControls
 
             if (dDangKyBLL.DangKyKhamBenh(dangKy))
             {
-                MessageBox.Show("Đăng ký khám bênh thành công!");
+                MessageBox.Show("Đăng ký khám bệnh thành công!");
                 HienThiSoNguoiConLaiDangKy();
 
             }
@@ -263,12 +271,19 @@ namespace QuanLyPhongMachTu.UserControls
             dt.Columns.Add("Ngày khám");
             dt.Columns.Add("Tổng tiền");
             dt.Columns.Add("Trạng thái");
-
+            if (string.IsNullOrEmpty(txtMaBN.Text))
+            {
+                return;
+            }
+            dBenhNhanBLL = new BLL_BENHNHAN();
+           
+            dHoaDonBLL = new BLL_HOADON();
             BENHNHAN benhNhan = dBenhNhanBLL.LayThongTinBenhNhan(txtMaBN.Text);
 
             dHoaDonBLL = new BLL_HOADON();
+            if (benhNhan == null )return;
+            
             List<HOADON> hoaDons = dHoaDonBLL.LayDanhSachHoaDon(benhNhan.id);
-
             int i = 0;
             foreach (HOADON hOADON in hoaDons)
             {

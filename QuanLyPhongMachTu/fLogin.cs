@@ -31,11 +31,25 @@ namespace QuanLyPhongMachTu
             string username = txt_UserName.Text;
             string password = txt_Password.Text;
 
+            if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password)) {
+                MessageBox.Show("Vui lòng cung cấp đầy đủ thông tin!");
+            }
+
+            if(string.IsNullOrEmpty(username))
+            {
+                MessageBox.Show("Vui lòng nhập tên đăng nhập");
+            }
+            if(string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Vui lòng nhập mật khẩu");
+            }
+
             BLL_LOGIN account = new BLL_LOGIN();
 
             bool isValid = account.Login(username, password);
             if (isValid)
             {
+                MessageBox.Show("Bạn đã đăng nhập thành công!");
                 currentUserName = username;
                 this.Hide();
                 fHome form1 = new fHome();

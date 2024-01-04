@@ -252,12 +252,6 @@ namespace QuanLyPhongMachTu.UserControls
 
         private void HienThiDGVThuoc()
         {
-            //if (string.IsNullOrEmpty(txtPhieuKhamBenh.Text))
-            //{
-            //    dgvThuoc.DataSource = null;
-
-            //    return;
-            //}
             DataTable dt = new DataTable();
             dt.Columns.Add("STT");
             dt.Columns.Add("Mã thuốc");
@@ -387,10 +381,6 @@ namespace QuanLyPhongMachTu.UserControls
             {
                 MessageBox.Show("Thêm phiếu khám bênh thất bại!");
             }
-
-         
-            
-
         }
 
         public void HienThiThongTinPhieuKhamBenh()
