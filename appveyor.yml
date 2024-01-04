@@ -1,0 +1,14 @@
+name: My .NET Framework Project
+
+stages:
+  - build
+  - test
+
+build:
+  steps:
+    - script: dotnet restore
+    - script: dotnet build
+
+test:
+  steps:
+    - script: dotnet test
